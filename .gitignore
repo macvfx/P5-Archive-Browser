@@ -5,6 +5,8 @@
 
 # Extracted application bundle; distribute the ZIP instead
 P5 Archive Browser.app/
+# Signed application packages belong in GitHub Releases, not repository history
+P5 Archive Browser.app.zip
 
 # Tester archive data must never be committed
 *.tsv

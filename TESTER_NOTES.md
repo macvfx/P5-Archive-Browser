@@ -7,8 +7,8 @@ for archive and restore operations.
 ## Important limitations
 
 - The app is Apple-silicon only and requires macOS 14.6 or later.
-- This test build is not notarized. macOS may require **Open Anyway** on first
-  launch.
+- Download only the signed application attached to this repository's
+  pre-release. Check that release for its signing and notarization status.
 - CSV metadata and TSV inventory are currently imported in two actions.
 - TSV import scans the selected folder and one subfolder level.
 - Prepared portable-database import/export is not available yet.

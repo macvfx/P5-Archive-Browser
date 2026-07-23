@@ -10,19 +10,15 @@ does not contain the application source code.
 
 ## Download and install
 
-1. Download `P5 Archive Browser.app.zip` from the top level of this repository.
+1. Open this repository's **Releases** page and download the signed
+   `P5 Archive Browser.app.zip` from the pre-release Assets section.
 2. Double-click the ZIP to expand it.
 3. Move **P5 Archive Browser.app** to your Applications folder.
 4. Open the application.
 
-This pre-release is for Apple-silicon Macs and requires macOS 14.6 or later. It
-is not notarized. If macOS blocks the first launch, right-click the app and
-choose **Open**, or use **System Settings ▸ Privacy & Security ▸ Open Anyway**.
-Only do this if you obtained the app directly from this repository.
-
-ZIP SHA-256:
-
-`9d462905219470ff3910b420722a77ca3aff47d6bc303fa8fd220e62b61a1591`
+This pre-release is for Apple-silicon Macs and requires macOS 14.6 or later.
+Download only the signed application attached to a pre-release in this
+repository. Signing and notarization status will be stated on that release.
 
 ## What testers can do
 
