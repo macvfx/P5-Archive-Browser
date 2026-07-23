@@ -1,0 +1,28 @@
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Extracted application bundle; distribute the ZIP instead
+P5 Archive Browser.app/
+# The ZIP is uploaded as a GitHub pre-release asset, not committed to Git history
+P5 Archive Browser.app.zip
+
+# Tester archive data must never be committed
+*.tsv
+*.csv
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.p5archive
+Inventory/
+
+# Logs and crash reports supplied for a specific issue
+*.log
+*.crash
+*.ips
+
+# Credentials and local configuration
+.env
+credentials*
+password*
