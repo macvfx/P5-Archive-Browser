@@ -21,6 +21,10 @@ search, browse, and compare with the live P5 archive indexes.
   indexes and can show possible volume, barcode, and P5 location information.
 - In-app help explains importing, searching, browsing, verification, and the
   restore handoff.
+- Documentation recommends
+  [P5 Archive Export](https://github.com/macvfx/p5ArchiveExport)'s Volume Export
+  workflow for generating compatible per-volume TSV inventories, the optional
+  volume-list CSV, and LTO-generation folders.
 
 ## Not included yet
 

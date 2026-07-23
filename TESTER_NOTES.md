@@ -20,21 +20,24 @@ for archive and restore operations.
 
 ## Suggested test pass
 
-1. Import a volume-list CSV.
-2. Import a parent folder containing generation folders such as `LTO-7` and
+1. Use [P5 Archive Export](https://github.com/macvfx/p5ArchiveExport)'s
+   **Volume Export** workflow to prepare per-volume TSV inventories and,
+   optionally, the full volume-list CSV organized by LTO generation.
+2. Import the volume-list CSV.
+3. Import a parent folder containing generation folders such as `LTO-7` and
    `LTO-8`.
-3. Wait for background search-index maintenance to finish.
-4. Open a large tape and expand several folders.
-5. Search within that tape and verify the complete match count and bounded result
+4. Wait for background search-index maintenance to finish.
+5. Open a large tape and expand several folders.
+6. Search within that tape and verify the complete match count and bounded result
    list.
-6. Search all tapes in **Files**, reveal a result, and return to the retained
+7. Search all tapes in **Files**, reveal a result, and return to the retained
    results.
-7. Search in **Projects**, browse a tape row, and return to Project results.
-8. Save similarly named File and Project searches and confirm labels such as
+8. Search in **Projects**, browse a tape row, and return to Project results.
+9. Save similarly named File and Project searches and confirm labels such as
    `Apple - Files` and `Apple - Projects`.
-9. Configure a P5 connection, load P5 Tools, and inspect archive indexes and
+10. Configure a P5 connection, load P5 Tools, and inspect archive indexes and
    archive plans.
-10. Click the check-shield button on a filtered file row, or right-click a file
+11. Click the check-shield button on a filtered file row, or right-click a file
     in the folder tree, and run the read-only P5 verification.
 
 ## Reporting a problem

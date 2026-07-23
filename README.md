@@ -22,7 +22,7 @@ Only do this if you obtained the app directly from this repository.
 
 ZIP SHA-256:
 
-`98a73eac5457eecd4ba2a546f40f60b73136e39ecff16c165cebda7f63aed4a2`
+`9d462905219470ff3910b420722a77ca3aff47d6bc303fa8fd220e62b61a1591`
 
 ## What testers can do
 
@@ -45,6 +45,13 @@ change data on the P5 server.
 - [User Guide](USER_GUIDE.md)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
+
+## Prepare P5 inventory exports
+
+Use [P5 Archive Export](https://github.com/macvfx/p5ArchiveExport) as the
+recommended companion app. Its **Volume Export** workflow creates the per-volume
+TSV inventories that P5 Archive Browser searches. It can also include the full
+volume-list CSV and organize TSV output by LTO generation.
 
 Please do not commit client CSV files, TSV inventories, databases, server
 credentials, logs, or crash reports to this public repository.

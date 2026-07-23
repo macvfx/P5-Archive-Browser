@@ -21,6 +21,14 @@ The app is useful from CSV and TSV imports without a live P5 connection.
 
 ## Recommended first import
 
+Generate the source files with
+[P5 Archive Export](https://github.com/macvfx/p5ArchiveExport). Choose its
+**Volume Export** workflow—not SQL Export or Backup Export—to create one
+`volumeID[_BARCODE].tsv` inventory per P5 volume. Enable its full volume-list CSV
+option when you also want offline labels, barcodes, state, size, and location
+metadata. Its LTO-generation organization option produces a folder layout that
+P5 Archive Browser can use directly.
+
 Arrange an export folder like this:
 
 ```text
