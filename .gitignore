@@ -5,8 +5,6 @@
 
 # Extracted application bundle; distribute the ZIP instead
 P5 Archive Browser.app/
-# The ZIP is uploaded as a GitHub pre-release asset, not committed to Git history
-P5 Archive Browser.app.zip
 
 # Tester archive data must never be committed
 *.tsv

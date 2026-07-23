@@ -10,8 +10,7 @@ does not contain the application source code.
 
 ## Download and install
 
-1. Open the repository's latest **Pre-release** and download
-   `P5 Archive Browser.app.zip` from its Assets section.
+1. Download `P5 Archive Browser.app.zip` from the top level of this repository.
 2. Double-click the ZIP to expand it.
 3. Move **P5 Archive Browser.app** to your Applications folder.
 4. Open the application.
