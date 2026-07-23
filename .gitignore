@@ -3,10 +3,9 @@
 .AppleDouble
 .LSOverride
 
-# Extracted application bundle; distribute the ZIP instead
+# Application bundles and disk images belong in GitHub Releases
 P5 Archive Browser.app/
-# Signed application packages belong in GitHub Releases, not repository history
-P5 Archive Browser.app.zip
+P5 Archive Browser*.dmg
 
 # Tester archive data must never be committed
 *.tsv

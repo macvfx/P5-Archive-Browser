@@ -10,15 +10,15 @@ does not contain the application source code.
 
 ## Download and install
 
-1. Open this repository's **Releases** page and download the signed
-   `P5 Archive Browser.app.zip` from the pre-release Assets section.
-2. Double-click the ZIP to expand it.
-3. Move **P5 Archive Browser.app** to your Applications folder.
-4. Open the application.
+1. Open this repository's **Releases** page and download
+   `P5 Archive Browser.dmg` from the pre-release Assets section.
+2. Open the DMG.
+3. Drag **P5 Archive Browser.app** to the Applications folder.
+4. Eject the DMG, then open the app from Applications.
 
 This pre-release is for Apple-silicon Macs and requires macOS 14.6 or later.
-Download only the signed application attached to a pre-release in this
-repository. Signing and notarization status will be stated on that release.
+Download only the DMG attached to a pre-release in this repository. Signing and
+notarization status will be stated on that release.
 
 ## What testers can do
 
