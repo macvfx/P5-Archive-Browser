@@ -15,6 +15,9 @@ search, browse, and compare with the live P5 archive indexes.
   complete tree in memory.
 - Tape-local searches retain the complete match count and display a bounded
   result list.
+- Tape rows identify LTO generation by disc color and show visible indicators
+  for a missing barcode, inferred generation, location, and live online/offline
+  state. The User Guide includes the complete legend.
 - CSV and P5 API metadata provenance is visible separately from TSV inventory.
 - P5 Tools lists archive indexes and archive plans.
 - Read-only file verification automatically checks all discovered archive

@@ -64,6 +64,22 @@ Use the search field above File Browser to search only the selected tape. Broad
 searches report the complete match count while displaying the first 2,000 paths.
 Clear the field to return to the folder hierarchy.
 
+## Understand tape rows
+
+- **Colored disc** — the tape's LTO generation: orange is LTO-6, blue is
+  LTO-7, green is LTO-8, purple is LTO-9, and gray means the generation is
+  unknown.
+- **Generation badge** — shows the detected LTO generation. A trailing “~”
+  means it was inferred from source-folder or size evidence rather than confirmed
+  by a barcode.
+- **Crossed-out tag** — the tape has no barcode, so its displayed name comes
+  from its alias or P5 volume label.
+- **Map pin** — the tape has a physical Location note or a location reported by
+  P5.
+- **Status dot at the right** — when live P5 state is available, green means
+  online and gray means offline. No dot means the app has no live online/offline
+  state for that tape.
+
 ## Search all tapes
 
 Select **Search All Tapes** in the sidebar.

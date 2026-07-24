@@ -28,16 +28,20 @@ for archive and restore operations.
    `LTO-8`.
 4. Wait for background search-index maintenance to finish.
 5. Open a large tape and expand several folders.
-6. Search within that tape and verify the complete match count and bounded result
+6. Check the tape-row legend: orange/blue/green/purple discs mean LTO-6/7/8/9,
+   gray means unknown, “~” means inferred generation, a crossed-out tag means no
+   barcode, the map pin means location, and a right-side green/gray dot means
+   live P5 online/offline state.
+7. Search within that tape and verify the complete match count and bounded result
    list.
-7. Search all tapes in **Files**, reveal a result, and return to the retained
+8. Search all tapes in **Files**, reveal a result, and return to the retained
    results.
-8. Search in **Projects**, browse a tape row, and return to Project results.
-9. Save similarly named File and Project searches and confirm labels such as
+9. Search in **Projects**, browse a tape row, and return to Project results.
+10. Save similarly named File and Project searches and confirm labels such as
    `Apple - Files` and `Apple - Projects`.
-10. Configure a P5 connection, load P5 Tools, and inspect archive indexes and
+11. Configure a P5 connection, load P5 Tools, and inspect archive indexes and
    archive plans.
-11. Click the check-shield button on a filtered file row, or right-click a file
+12. Click the check-shield button on a filtered file row, or right-click a file
     in the folder tree, and run the read-only P5 verification.
 
 ## Reporting a problem

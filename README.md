@@ -25,6 +25,8 @@ notarization status will be stated on that release.
 - Import P5 volume metadata from a volume-list CSV.
 - Import searchable tape contents from P5 TSV inventory files.
 - Browse large tape inventories folder by folder.
+- Read the tape-row indicators for LTO generation, a missing barcode, inferred
+  generation, location, and live online/offline state.
 - Search files and derived projects across all imported tapes.
 - Open a search result on its tape and return to retained results.
 - Save and reopen recent File and Project searches.
