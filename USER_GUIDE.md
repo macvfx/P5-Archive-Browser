@@ -29,17 +29,22 @@ option when you also want offline labels, barcodes, state, size, and location
 metadata. Its LTO-generation organization option produces a folder layout that
 P5 Archive Browser can use directly.
 
+P5's own Volume Inventory UI may instead create a name such as the synthetic
+`90002_vol_inventory.tsv`. Here, `90002` is the P5 volume ID and
+`vol_inventory` is a description, not a barcode. The app leaves Barcode empty
+unless the filename contains a valid LTO barcode or metadata later supplies one.
+
 Arrange an export folder like this:
 
 ```text
 Client Archive Export/
   p5-volumes-list.csv
   LTO-7/
-    10001_BARCODEL7.tsv
-    10002_BARCODEL7.tsv
+    90001_DEMO01L7.tsv
+    90002_DEMO02L7.tsv
   LTO-8/
-    11064.tsv
-    11065.tsv
+    90003.tsv
+    90004.tsv
 ```
 
 1. Choose **Import ▸ Import Archive Folder (CSV + TSV)…**.
@@ -54,6 +59,10 @@ You do not need to import each generation separately. The importer reads TSV
 files at the selected folder's top level and one subfolder level. Immediate
 subfolders such as `LTO-7` and `LTO-8` remain source provenance and generation
 evidence; use Archive Groups for your own sidebar organization.
+
+To import only one inventory from a larger folder, choose **Import ▸ Import File
+Inventory (TSV)…** and select that `.tsv` directly. Selecting a folder keeps the
+bulk root-plus-one-subfolder behavior.
 
 ## Automatically import later TSV exports
 
@@ -159,6 +168,9 @@ Use:
 - **Discover New Volumes from P5** to add newly discovered server volumes.
 - **Refresh Live Metadata for All Volumes** to refresh existing volume details.
 - **Refresh Detail** to refresh the currently selected tape.
+- **Resolve from P5** beside an empty Barcode to match the P5 volume list by
+  label or numeric ID, then fall back to the individual volume detail. If P5
+  reports no barcode, the value remains empty.
 - **P5 Tools** beside Refresh Detail to list archive indexes and archive plans.
 
 Bulk and single-tape metadata refreshes run a bounded P5 connection test before

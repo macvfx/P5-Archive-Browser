@@ -1,6 +1,7 @@
-# P5 Archive Browser v0.19 (build 31) Pre-release Notes
+# P5 Archive Browser v0.19 (build 32) Pre-release Notes
 
-This pre-release adds durable user-managed catalog organization and prevents an
+This pre-release adds durable user-managed catalog organization, safer and more
+flexible P5 inventory imports, and bounded connection checks that prevent an
 unreachable P5 server from turning one metadata refresh into repeated per-tape
 timeouts.
 
@@ -27,6 +28,18 @@ timeouts.
 - Reimports preserve manual Archive Group assignments.
 - Combined Archive Folder import loads one top-level volume-list CSV before its
   root and generation-folder TSV inventories.
+- Import File Inventory (TSV)… accepts either one selected TSV from a larger
+  folder or the existing folder-based bulk import.
+- P5-native Volume Inventory filenames such as the synthetic example
+  `90002_vol_inventory.tsv` retain the numeric P5 volume ID and correctly leave
+  Barcode empty; `vol_inventory` is a description, not a barcode.
+- Build 31's narrowly known mistaken `vol` barcode repairs automatically without
+  broadly clearing real, unusual, CSV, P5, or user-entered values.
+- Barcode-less tapes with a P5 volume ID offer **Resolve from P5** in Info &
+  Notes. The lookup matches P5's volume list by label or numeric ID, then checks
+  the individual volume detail.
+- When P5 supplies a real label for a numeric TSV stub, the app merges the tape
+  identity while preserving searchable inventory and Archive Group placement.
 - Durable Watch Folder history records source state, successful fingerprints,
   runs, attempts, interruption recovery, and inventory provenance.
 - Bulk and single-tape P5 metadata refreshes run a bounded preflight and display
@@ -48,6 +61,7 @@ timeouts.
 - Named multiple P5 servers and server-scoped tape identity.
 - Archive Group-bound manual/watch imports and server-routed verification.
 - Automatic volume-list CSV watching.
+- A user-owned manual barcode override with reported-versus-override provenance.
 - P5 restore submission or archive submission.
 
 See [Tester Notes](TESTER_NOTES.md) for installation limitations and the

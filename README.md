@@ -8,7 +8,7 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers version 0.19 (build 31). Check the Releases page for
+The documentation covers version 0.19 (build 32). Check the Releases page for
 the version number of the latest downloadable pre-release.
 
 ## Download and install
@@ -27,6 +27,9 @@ notarization status will be stated on that release.
 
 - Import P5 volume metadata from a volume-list CSV.
 - Import searchable tape contents from P5 TSV inventory files.
+- Select one TSV from a larger folder, or select a folder for a bulk import.
+- Import P5-native names such as `90002_vol_inventory.tsv` without treating
+  `vol` as a barcode, then resolve a missing barcode from P5 by volume ID.
 - Import a complete P5 Archive Export folder in one guided CSV-first operation,
   or automatically watch its TSV inventories for later changes.
 - Organize tapes into persistent, collapsible Archive Groups independently from

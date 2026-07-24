@@ -9,7 +9,8 @@ for archive and restore operations.
 - The app is Apple-silicon only and requires macOS 14.6 or later.
 - Download only the DMG attached to this repository's pre-release. Check that
   release for the app's signing and notarization status.
-- TSV import scans the selected folder and one subfolder level.
+- TSV import accepts one selected `.tsv`; selecting a folder scans that folder
+  and one subfolder level.
 - Prepared portable-database import/export is not available yet.
 - Watch Folder automatically imports TSV only; volume-list CSV watching is not
   available yet.
@@ -26,28 +27,37 @@ for archive and restore operations.
    optionally, the full volume-list CSV organized by LTO generation.
 2. Use **Import Archive Folder (CSV + TSV)…** on the parent folder containing the
    volume-list CSV and generation folders such as `LTO-7` and `LTO-8`.
-3. Confirm the completion summary reports metadata and inventory separately.
-4. Wait for background search-index maintenance to finish.
-5. Create Archive Groups, bulk-move tapes from Unassigned, reorder groups, and
+3. From a larger folder such as Downloads, use **Import File Inventory
+   (TSV)…** to select one TSV and confirm no neighboring TSV is imported.
+4. Import a synthetic P5-native example such as
+   `90002_vol_inventory.tsv`. Confirm its P5 volume ID is `90002` and Barcode is
+   empty rather than `vol`.
+5. If the configured P5 server knows a barcode for that volume ID, use
+   **Resolve from P5** beside Barcode and confirm the tape reconciles without
+   losing its inventory or Archive Group. If P5 reports no barcode, confirm the
+   app leaves it empty and explains that result.
+6. Confirm the completion summary reports metadata and inventory separately.
+7. Wait for background search-index maintenance to finish.
+8. Create Archive Groups, bulk-move tapes from Unassigned, reorder groups, and
    confirm disclosure triangles keep the sidebar compact.
-6. Quit and reopen the app; confirm group names, order, and assignments persist.
-7. Open a large tape and expand several folders.
-8. Check the tape-row legend: orange/blue/green/purple discs mean LTO-6/7/8/9,
+9. Quit and reopen the app; confirm group names, order, and assignments persist.
+10. Open a large tape and expand several folders.
+11. Check the tape-row legend: orange/blue/green/purple discs mean LTO-6/7/8/9,
    gray means unknown, “~” means inferred generation, a crossed-out tag means no
    barcode, the map pin means location, and a right-side green/gray dot means
    live P5 online/offline state.
-9. Search within that tape and verify the complete match count and bounded result
+12. Search within that tape and verify the complete match count and bounded result
    list.
-10. Search all tapes in **Files**, reveal a result, and return to the retained
+13. Search all tapes in **Files**, reveal a result, and return to the retained
    results.
-11. Search in **Projects**, browse a tape row, and return to Project results.
-12. Save similarly named File and Project searches and confirm labels such as
+14. Search in **Projects**, browse a tape row, and return to Project results.
+15. Save similarly named File and Project searches and confirm labels such as
    `Apple - Files` and `Apple - Projects`.
-13. Configure a P5 connection, load P5 Tools, and inspect archive indexes and
+16. Configure a P5 connection, load P5 Tools, and inspect archive indexes and
    archive plans.
-14. With P5 unavailable, run bulk and single-tape metadata refreshes and confirm
+17. With P5 unavailable, run bulk and single-tape metadata refreshes and confirm
     each stops after one bounded connection test with a visible message.
-15. Click the check-shield button on a filtered file row, or right-click a file
+18. Click the check-shield button on a filtered file row, or right-click a file
     in the folder tree, and run the read-only P5 verification.
 
 ## Reporting a problem
