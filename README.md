@@ -8,6 +8,9 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
+The documentation covers version 0.19 (build 31). Check the Releases page for
+the version number of the latest downloadable pre-release.
+
 ## Download and install
 
 1. Open this repository's **Releases** page and download
@@ -24,6 +27,10 @@ notarization status will be stated on that release.
 
 - Import P5 volume metadata from a volume-list CSV.
 - Import searchable tape contents from P5 TSV inventory files.
+- Import a complete P5 Archive Export folder in one guided CSV-first operation,
+  or automatically watch its TSV inventories for later changes.
+- Organize tapes into persistent, collapsible Archive Groups independently from
+  their TSV source folders.
 - Browse large tape inventories folder by folder.
 - Read the tape-row indicators for LTO generation, a missing barcode, inferred
   generation, location, and live online/offline state.
@@ -31,6 +38,8 @@ notarization status will be stated on that release.
 - Open a search result on its tape and return to retained results.
 - Save and reopen recent File and Project searches.
 - Connect to P5 for live volume metadata and health information.
+- Stop bulk and single-tape metadata refreshes quickly when P5 is unreachable,
+  using one bounded connection preflight instead of repeated tape timeouts.
 - List P5 archive indexes and archive plans.
 - Perform a read-only sanity check for a cataloged file across P5 archive
   indexes.

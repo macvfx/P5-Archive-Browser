@@ -42,14 +42,30 @@ Client Archive Export/
     11065.tsv
 ```
 
-1. Choose **Import ▸ Import Offline Volume Metadata (CSV)…** and select the CSV.
-2. Choose **Import ▸ Import File Inventory (TSV)…** and select the top-level
-   `Client Archive Export` folder.
-3. Wait for background search-index maintenance to reach 100%.
+1. Choose **Import ▸ Import Archive Folder (CSV + TSV)…**.
+2. Select the top-level `Client Archive Export` folder. The app recognizes one
+   top-level volume-list CSV, imports it first, and then imports TSV inventories
+   from the root and one generation-folder level.
+3. Review the completion summary, which reports metadata and inventory results
+   separately.
+4. Wait for background search-index maintenance to reach 100%.
 
 You do not need to import each generation separately. The importer reads TSV
 files at the selected folder's top level and one subfolder level. Immediate
-subfolders such as `LTO-7` and `LTO-8` become optional sidebar groups.
+subfolders such as `LTO-7` and `LTO-8` remain source provenance and generation
+evidence; use Archive Groups for your own sidebar organization.
+
+## Automatically import later TSV exports
+
+Open **Settings ▸ Watch Folder**, select the P5 Archive Export folder, and enable
+watching. New or modified TSVs wait until they are old and stable before import;
+unchanged successful files are skipped. **Check Now** scans immediately, while
+**Clear History** makes the next scan reconsider every TSV.
+
+Malformed replacements, interrupted imports, and conflicting sources do not
+replace the last successful tape inventory. Watch state, fingerprints, runs,
+attempts, and inventory provenance remain durable across restarts. Volume-list
+CSV watching is not included yet.
 
 ## Browse a tape
 
@@ -79,6 +95,21 @@ Clear the field to return to the folder hierarchy.
 - **Status dot at the right** — when live P5 state is available, green means
   online and gray means offline. No dot means the app has no live online/offline
   state for that tape.
+
+## Organize tapes with Archive Groups
+
+Archive Groups are persistent, user-managed sidebar folders. They are separate
+from TSV source folders such as `LTO-7`.
+
+- Each group has a disclosure triangle and tape count and starts collapsed.
+- Click **Organize…** to create, rename, reorder, merge, or safely delete groups
+  and to move multiple tapes at once.
+- Right-click a tape and choose **Move to Archive Group** for a single move.
+- **Unassigned** contains tapes not yet placed in a group.
+- Deleting a group moves its tapes to Unassigned and never deletes catalog
+  inventory.
+- Reimporting a TSV updates its source provenance without undoing its Archive
+  Group assignment.
 
 ## Search all tapes
 
@@ -129,6 +160,12 @@ Use:
 - **Refresh Live Metadata for All Volumes** to refresh existing volume details.
 - **Refresh Detail** to refresh the currently selected tape.
 - **P5 Tools** beside Refresh Detail to list archive indexes and archive plans.
+
+Bulk and single-tape metadata refreshes run a bounded P5 connection test before
+requesting tape details. If P5 is unavailable, the app stops and offers Settings
+instead of timing out against every tape. If connectivity drops during a bulk
+refresh, the app performs one short recheck, stops, and reports how many tapes
+completed. A failed single-tape refresh leaves its existing metadata unchanged.
 
 ## Verify a file in P5
 
