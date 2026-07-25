@@ -8,7 +8,7 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers version 0.19 (build 32). Check the Releases page for
+The documentation covers version 0.19 (build 33). Check the Releases page for
 the version number of the latest downloadable pre-release.
 
 ## Download and install
@@ -26,17 +26,23 @@ notarization status will be stated on that release.
 ## What testers can do
 
 - Import P5 volume metadata from a volume-list CSV.
+- Normalize balanced SQL-style outer quotes so CSV identities reconcile with
+  their TSV tapes, with a targeted cleanup for pre-existing zero-file ghosts.
 - Import searchable tape contents from P5 TSV inventory files.
 - Select one TSV from a larger folder, or select a folder for a bulk import.
 - Import P5-native names such as `90002_vol_inventory.tsv` without treating
   `vol` as a barcode, then resolve a missing barcode from P5 by volume ID.
 - Import a complete P5 Archive Export folder in one guided CSV-first operation,
   or automatically watch its TSV inventories for later changes.
+- Create a consistent standalone catalog backup, or perform a backup-gated
+  catalog reset while retaining P5/project settings and the Keychain password.
 - Organize tapes into persistent, collapsible Archive Groups independently from
   their TSV source folders.
 - Browse large tape inventories folder by folder.
 - Read the tape-row indicators for LTO generation, a missing barcode, inferred
   generation, location, and live online/offline state.
+- Keep P5 Location visible as read-only metadata while suppressing the
+  server's `<empty>` sentinel and its sidebar icon.
 - Search files and derived projects across all imported tapes.
 - Open a search result on its tape and return to retained results.
 - Save and reopen recent File and Project searches.
@@ -55,6 +61,7 @@ change data on the P5 server.
 - [User Guide](USER_GUIDE.md)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
+- [Build 33 GitHub Release Blurb](RELEASE_BLURB_0.19_BUILD_33.md)
 
 ## Prepare P5 inventory exports
 
@@ -62,6 +69,11 @@ Use [P5 Archive Export](https://github.com/macvfx/p5ArchiveExport) as the
 recommended companion app. Its **Volume Export** workflow creates the per-volume
 TSV inventories that P5 Archive Browser searches. It can also include the full
 volume-list CSV and organize TSV output by LTO generation.
+
+Build 33 supports the six-column inventory order `index path, ppath, size,
+handle, btime, mtime`. The eight-column P5 Web UI order is not supported yet
+because it moves file size to column 4; do not import that format until
+schema-aware support is released.
 
 Please do not commit client CSV files, TSV inventories, databases, server
 credentials, logs, or crash reports to this public repository.

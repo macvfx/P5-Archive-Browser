@@ -1,5 +1,7 @@
 # Tester Notes
 
+These notes apply to **P5 Archive Browser v0.19 build 33**.
+
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
 use copies of exported inventory files and continue using your normal P5 tools
 for archive and restore operations.
@@ -11,6 +13,9 @@ for archive and restore operations.
   release for the app's signing and notarization status.
 - TSV import accepts one selected `.tsv`; selecting a folder scans that folder
   and one subfolder level.
+- Build 33 supports the six-column order `index path, ppath, size, handle,
+  btime, mtime`. Do not import the eight-column P5 Web UI order yet; it moves
+  size to column 4 and is awaiting schema-aware support.
 - Prepared portable-database import/export is not available yet.
 - Watch Folder automatically imports TSV only; volume-list CSV watching is not
   available yet.
@@ -59,6 +64,17 @@ for archive and restore operations.
     each stops after one bounded connection test with a visible message.
 18. Click the check-shield button on a filtered file row, or right-click a file
     in the folder tree, and run the read-only P5 verification.
+19. Import a copy of a volume-list CSV with balanced outer single quotes around
+    its fields. Confirm its synthetic volume `90010` reconciles with TSV volume
+    `90010` instead of creating a second zero-file tape.
+20. In Settings ▸ **Catalog Data**, confirm invalid CSV cleanup counts and
+    removes only quote-polluted CSV records with zero files.
+21. Use **Back Up Catalog…** and confirm the resulting SQLite file exists
+    without required `-wal` or `-shm` companions. Test reset only with disposable
+    data and confirm its automatic backup succeeds first.
+22. For a tape whose P5 Location is `<empty>`, confirm Info & Notes shows a dash
+    and the sidebar has no map pin. A real shelf, slot, drive, or note should
+    display and remain searchable.
 
 ## Reporting a problem
 

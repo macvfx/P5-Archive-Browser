@@ -1,5 +1,7 @@
 # P5 Archive Browser User Guide
 
+Applies to **P5 Archive Browser v0.19 build 33**.
+
 ## Purpose
 
 P5 Archive Browser is a local catalog for P5 Archive volumes, usually LTO tapes.
@@ -11,9 +13,11 @@ loaded into your normal P5 restore workflow.
 The app keeps three sources distinct:
 
 - **TSV file inventory** supplies archived paths. It powers File Browser, Files
-  search, and Projects.
+  search, and Projects. Build 33 supports the six-column order `index path,
+  ppath, size, handle, btime, mtime`.
 - **Volume-list CSV** supplies offline tape metadata such as volume label,
   barcode, state, media type, used size, last-used date, and P5 location.
+  Balanced SQL-style outer single quotes are removed before identity matching.
 - **P5 REST API** supplies live volume metadata and health, archive indexes,
   archive plans, and read-only file verification.
 
@@ -33,6 +37,10 @@ P5's own Volume Inventory UI may instead create a name such as the synthetic
 `90002_vol_inventory.tsv`. Here, `90002` is the P5 volume ID and
 `vol_inventory` is a description, not a barcode. The app leaves Barcode empty
 unless the filename contains a valid LTO barcode or metadata later supplies one.
+
+Do not yet import Archiware P5's eight-column Web UI inventory order (`index
+path, ppath, volumes, size, handle, btime, mtime, checksum`). File size moves
+from column 3 to column 4 in that format; schema-aware support is planned.
 
 Arrange an export folder like this:
 
@@ -76,6 +84,19 @@ replace the last successful tape inventory. Watch state, fingerprints, runs,
 attempts, and inventory provenance remain durable across restarts. Volume-list
 CSV watching is not included yet.
 
+## Back up, repair, or reset the catalog
+
+Open **Settings ▸ Catalog Data**:
+
+- **Back Up Catalog…** creates a consistent standalone SQLite copy while the
+  app remains open.
+- **Remove Invalid CSV Records…** is available only when the app finds
+  CSV-origin, zero-file records whose identity still has balanced outer single
+  quotes. Inventory-bearing tapes are never selected.
+- **Back Up and Reset Catalog…** stops the watch folder and must create a dated
+  backup before clearing imported tapes, inventories, Archive Groups, and watch
+  history. P5/project settings and the Keychain password are preserved.
+
 ## Browse a tape
 
 Select a tape in the sidebar and open **File Browser**. Large inventories load
@@ -100,7 +121,7 @@ Clear the field to return to the folder hierarchy.
 - **Crossed-out tag** — the tape has no barcode, so its displayed name comes
   from its alias or P5 volume label.
 - **Map pin** — the tape has a physical Location note or a location reported by
-  P5.
+  P5. The P5 `<empty>` sentinel never creates this icon.
 - **Status dot at the right** — when live P5 state is available, green means
   online and gray means offline. No dot means the app has no live online/offline
   state for that tape.
@@ -172,6 +193,11 @@ Use:
   label or numeric ID, then fall back to the individual volume detail. If P5
   reports no barcode, the value remains empty.
 - **P5 Tools** beside Refresh Detail to list archive indexes and archive plans.
+
+**P5 Location** remains visible in Info & Notes as read-only metadata. Change it
+in P5, then use **Refresh Detail**. When P5 reports `<empty>`, the field shows a
+dash and no sidebar map pin; genuine shelf, slot, drive, or note values display
+and remain searchable.
 
 Bulk and single-tape metadata refreshes run a bounded P5 connection test before
 requesting tape details. If P5 is unavailable, the app stops and offers Settings

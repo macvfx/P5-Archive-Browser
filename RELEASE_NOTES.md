@@ -1,9 +1,9 @@
-# P5 Archive Browser v0.19 (build 32) Pre-release Notes
+# P5 Archive Browser v0.19 (build 33) Pre-release Notes
 
 This pre-release adds durable user-managed catalog organization, safer and more
-flexible P5 inventory imports, and bounded connection checks that prevent an
-unreachable P5 server from turning one metadata refresh into repeated per-tape
-timeouts.
+flexible P5 inventory imports, guarded catalog maintenance, and bounded
+connection checks that prevent an unreachable P5 server from turning one
+metadata refresh into repeated per-tape timeouts.
 
 ## Highlights
 
@@ -28,6 +28,17 @@ timeouts.
 - Reimports preserve manual Archive Group assignments.
 - Combined Archive Folder import loads one top-level volume-list CSV before its
   root and generation-folder TSV inventories.
+- Balanced SQL-style outer single quotes are removed from CSV values before
+  identity matching. A synthetic `'90010'` CSV volume now reconciles with TSV
+  volume `90010`; apostrophes inside legitimate values remain unchanged.
+- Settings ▸ **Catalog Data** can remove only quote-polluted CSV-origin records
+  with zero imported files. Inventory-bearing tapes are never candidates.
+- **Back Up Catalog…** creates a transactionally consistent standalone SQLite
+  file while Browser remains open.
+- **Back Up and Reset Catalog…** stops the watch folder and requires an
+  automatic dated backup before clearing imported tapes, inventories, Archive
+  Groups, and watch history. P5/project settings and the Keychain password are
+  preserved.
 - Import File Inventory (TSV)… accepts either one selected TSV from a larger
   folder or the existing folder-based bulk import.
 - P5-native Volume Inventory filenames such as the synthetic example
@@ -40,6 +51,9 @@ timeouts.
   the individual volume detail.
 - When P5 supplies a real label for a numeric TSV stub, the app merges the tape
   identity while preserving searchable inventory and Archive Group placement.
+- P5 Location remains a visible, read-only field. `<empty>` displays as a dash
+  and does not create a sidebar map pin; genuine shelf, slot, drive, or note
+  values still display and remain searchable.
 - Durable Watch Folder history records source state, successful fingerprints,
   runs, attempts, interruption recovery, and inventory provenance.
 - Bulk and single-tape P5 metadata refreshes run a bounded preflight and display
@@ -62,6 +76,9 @@ timeouts.
 - Archive Group-bound manual/watch imports and server-routed verification.
 - Automatic volume-list CSV watching.
 - A user-owned manual barcode override with reported-versus-override provenance.
+- Eight-column P5 Web UI inventory import. Build 33 supports the six-column P5
+  Archive Export/direct `nsdchat` order; the Web UI order moves size to column 4
+  and must wait for schema-aware parsing and atomic validation.
 - P5 restore submission or archive submission.
 
 See [Tester Notes](TESTER_NOTES.md) for installation limitations and the
