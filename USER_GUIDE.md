@@ -1,6 +1,6 @@
 # P5 Archive Browser User Guide
 
-Applies to **P5 Archive Browser v0.19 build 33**.
+Applies to **P5 Archive Browser v0.20 build 35**.
 
 ## Purpose
 
@@ -88,6 +88,10 @@ CSV watching is not included yet.
 
 Open **Settings ▸ Catalog Data**:
 
+- **Storage used** reports the main SQLite database plus active WAL and
+  shared-memory sidecars.
+- **Preferred Backup Folder** chooses where manual backup panels start and
+  automatic pre-reset backups are written. It may be on another mounted drive.
 - **Back Up Catalog…** creates a consistent standalone SQLite copy while the
   app remains open.
 - **Remove Invalid CSV Records…** is available only when the app finds
@@ -96,6 +100,17 @@ Open **Settings ▸ Catalog Data**:
 - **Back Up and Reset Catalog…** stops the watch folder and must create a dated
   backup before clearing imported tapes, inventories, Archive Groups, and watch
   history. P5/project settings and the Keychain password are preserved.
+
+If the preferred backup folder is unavailable or not writable, reset stops
+without changing the catalog. Moving the active database itself is not yet
+supported.
+
+## Check for app updates
+
+Browser checks the public GitHub releases at most once per day and stays silent
+when no newer version exists. Choose **P5 Archive Browser ▸ Check for Updates…**
+for an immediate check. **Download** opens the public release page; Browser does
+not download or install updates automatically.
 
 ## Browse a tape
 

@@ -1,4 +1,4 @@
-# P5 Archive Browser v0.19 (build 33) Pre-release Notes
+# P5 Archive Browser v0.20 (build 35) Pre-release Notes
 
 This pre-release adds durable user-managed catalog organization, safer and more
 flexible P5 inventory imports, guarded catalog maintenance, and bounded
@@ -39,6 +39,16 @@ metadata refresh into repeated per-tape timeouts.
   automatic dated backup before clearing imported tapes, inventories, Archive
   Groups, and watch history. P5/project settings and the Keychain password are
   preserved.
+- Catalog Data reports the main database plus active SQLite WAL/shared-memory
+  sidecars so operators can see the complete live footprint.
+- **Preferred Backup Folder** can target another mounted drive. Manual backup
+  panels open there and automatic pre-reset backups use it.
+- Manual catalog backup filenames end in exactly one `.sqlite`.
+- If that preferred folder is unavailable or not writable, reset stops without
+  changing the catalog.
+- The app checks public GitHub releases at most once per day and alerts only
+  when a newer version/build is available. **Check for Updates…** performs an
+  immediate check; downloads remain operator initiated.
 - Import File Inventory (TSV)… accepts either one selected TSV from a larger
   folder or the existing folder-based bulk import.
 - P5-native Volume Inventory filenames such as the synthetic example
@@ -80,6 +90,7 @@ metadata refresh into repeated per-tape timeouts.
   Archive Export/direct `nsdchat` order; the Web UI order moves size to column 4
   and must wait for schema-aware parsing and atomic validation.
 - P5 restore submission or archive submission.
+- Moving the active catalog database to another drive.
 
 See [Tester Notes](TESTER_NOTES.md) for installation limitations and the
 recommended test pass.

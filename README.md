@@ -8,8 +8,8 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers version 0.19 (build 33). Check the Releases page for
-the version number of the latest downloadable pre-release.
+The documentation covers the upcoming version 0.20 (build 35). Check the
+Releases page for the version number of the latest downloadable pre-release.
 
 ## Download and install
 
@@ -36,6 +36,8 @@ notarization status will be stated on that release.
   or automatically watch its TSV inventories for later changes.
 - Create a consistent standalone catalog backup, or perform a backup-gated
   catalog reset while retaining P5/project settings and the Keychain password.
+- See the complete live catalog footprint and choose a persistent backup folder,
+  including a folder on another mounted drive.
 - Organize tapes into persistent, collapsible Archive Groups independently from
   their TSV source folders.
 - Browse large tape inventories folder by folder.
@@ -52,6 +54,7 @@ notarization status will be stated on that release.
 - List P5 archive indexes and archive plans.
 - Perform a read-only sanity check for a cataloged file across P5 archive
   indexes.
+- Check the public GitHub releases automatically or with **Check for Updates…**.
 
 P5 Archive Browser does not load tapes, restore files, submit archive jobs, or
 change data on the P5 server.
@@ -61,7 +64,7 @@ change data on the P5 server.
 - [User Guide](USER_GUIDE.md)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
-- [Build 33 GitHub Release Blurb](RELEASE_BLURB_0.19_BUILD_33.md)
+- [Build 35 GitHub Release Blurb](RELEASE_BLURB_0.20_BUILD_35.md)
 
 ## Prepare P5 inventory exports
 

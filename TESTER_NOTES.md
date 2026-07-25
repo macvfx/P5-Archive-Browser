@@ -1,6 +1,6 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.19 build 33**.
+These notes apply to **P5 Archive Browser v0.20 build 35**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
 use copies of exported inventory files and continue using your normal P5 tools
@@ -75,6 +75,19 @@ for archive and restore operations.
 22. For a tape whose P5 Location is `<empty>`, confirm Info & Notes shows a dash
     and the sidebar has no map pin. A real shelf, slot, drive, or note should
     display and remain searchable.
+23. In Settings ▸ **Catalog Data**, confirm Storage used reports a non-zero
+    database total and includes a separate live journal amount when WAL/SHM
+    sidecars are present.
+24. Choose a Preferred Backup Folder on another mounted drive. Confirm manual
+    backup starts there and a disposable catalog reset writes its automatic
+    backup there.
+25. Disconnect or rename that preferred destination and confirm reset stops
+    without changing the catalog.
+26. Choose **P5 Archive Browser ▸ Check for Updates…**. Confirm Build 35 checks
+    the public GitHub release and reports that the installed development build
+    does not require the older Build 33 release.
+27. Create a manual catalog backup and confirm its filename ends in one
+    `.sqlite`, not `.sqlite.sqlite`.
 
 ## Reporting a problem
 
