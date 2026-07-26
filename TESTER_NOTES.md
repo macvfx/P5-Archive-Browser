@@ -1,6 +1,6 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.20 build 35**.
+These notes apply to **P5 Archive Browser v0.21 build 36**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
 use copies of exported inventory files and continue using your normal P5 tools
@@ -13,9 +13,10 @@ for archive and restore operations.
   release for the app's signing and notarization status.
 - TSV import accepts one selected `.tsv`; selecting a folder scans that folder
   and one subfolder level.
-- Build 33 supports the six-column order `index path, ppath, size, handle,
-  btime, mtime`. Do not import the eight-column P5 Web UI order yet; it moves
-  size to column 4 and is awaiting schema-aware support.
+- Build 36 supports the six-column order `index path, ppath, size, handle,
+  btime, mtime` and P5 Web GUI's eight-column order `index path, ppath, volumes,
+  size, handle, btime, mtime, checksum`. Unknown custom layouts remain
+  unsupported and are rejected safely.
 - Prepared portable-database import/export is not available yet.
 - Watch Folder automatically imports TSV only; volume-list CSV watching is not
   available yet.
@@ -47,10 +48,10 @@ for archive and restore operations.
    confirm disclosure triangles keep the sidebar compact.
 9. Quit and reopen the app; confirm group names, order, and assignments persist.
 10. Open a large tape and expand several folders.
-11. Check the tape-row legend: orange/blue/green/purple discs mean LTO-6/7/8/9,
-   gray means unknown, “~” means inferred generation, a crossed-out tag means no
-   barcode, the map pin means location, and a right-side green/gray dot means
-   live P5 online/offline state.
+11. Check the tape-row legend: cyan/teal, orange, blue, green, purple, and
+   magenta discs mean LTO-5/6/7/8/9/10; gray means unknown, “~” means inferred
+   generation, a crossed-out tag means no barcode, the map pin means location,
+   and a right-side green/gray dot means live P5 online/offline state.
 12. Search within that tape and verify the complete match count and bounded result
    list.
 13. Search all tapes in **Files**, reveal a result, and return to the retained
@@ -83,11 +84,21 @@ for archive and restore operations.
     backup there.
 25. Disconnect or rename that preferred destination and confirm reset stops
     without changing the catalog.
-26. Choose **P5 Archive Browser ▸ Check for Updates…**. Confirm Build 35 checks
-    the public GitHub release and reports that the installed development build
-    does not require the older Build 33 release.
+26. Choose **P5 Archive Browser ▸ Check for Updates…**. Confirm Build 36 checks
+    the public GitHub release and does not offer an older build.
 27. Create a manual catalog backup and confirm its filename ends in one
     `.sqlite`, not `.sqlite.sqlite`.
+28. Import one known six-column TSV and one P5 Web GUI eight-column TSV.
+    Confirm **Review Inventory Columns** identifies each profile and that the
+    imported file count and total size match the source.
+29. Test an eight-column row with an empty trailing checksum. Confirm it remains
+    eight columns and imports normally.
+30. With disposable test data, try a shifted, mixed, malformed, or unknown TSV
+    replacement. Confirm the import stops and the previously imported inventory
+    remains searchable.
+31. If LTO-5 or LTO-10 samples are available, confirm their sidebar colors,
+    filters, sorting, and detail labels. For a size-only estimate, confirm the
+    wording says **LTO-X or newer** rather than claiming an exact generation.
 
 ## Reporting a problem
 

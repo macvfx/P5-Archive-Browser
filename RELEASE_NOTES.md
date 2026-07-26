@@ -1,12 +1,30 @@
-# P5 Archive Browser v0.20 (build 35) Pre-release Notes
+# P5 Archive Browser v0.21 (build 36) Pre-release Notes
 
-This pre-release adds durable user-managed catalog organization, safer and more
-flexible P5 inventory imports, guarded catalog maintenance, and bounded
-connection checks that prevent an unreachable P5 server from turning one
-metadata refresh into repeated per-tape timeouts.
+This pre-release makes P5 inventory imports schema-safe, supports P5 Web GUI
+Volume Inventory exports directly, and extends generation recognition and
+operator colors from LTO-5 through LTO-10. It also includes the recent Archive
+Groups, catalog backup, update checking, and bounded P5 connection work.
 
 ## Highlights
 
+- **Review Inventory Columns** identifies the known six-column P5 Archive
+  Export/direct `nsdchat` profile and P5 Web GUI's eight-column Volume Inventory
+  profile before a manual file, folder, or combined CSV + TSV import.
+- The complete TSV is validated before any catalog change. Unsupported, mixed,
+  shifted, malformed, nonnumeric-size, and invalid-UTF-8 replacements preserve
+  the last good tape inventory.
+- The eight-column profile reads size from column 4 rather than mistaking its
+  volume identifier for bytes. Empty trailing checksums remain column 8.
+- Detected schema, ordered field mapping, source, row count, and imported total
+  are retained as inventory provenance.
+- Watch folders automatically accept both known profiles. Unknown layouts are
+  recorded as needing column review instead of being guessed.
+- LTO-5 uses a cyan/teal disc and LTO-10 uses magenta. Filters, sorting,
+  details, source-folder recognition, and official LTO-10 LA/PA identifiers
+  cover LTO-5 through LTO-10.
+- Documentation separates official native and advertised compressed cartridge
+  capacities from content-size inference. A size estimate is labeled **LTO-X or
+  newer**, never as exact media identification.
 - Fast indexed file search across imported tape inventories.
 - Files and Projects search modes with Recent and Saved searches.
 - Search labels use query-first wording such as `Apple - Files` and
@@ -86,9 +104,11 @@ metadata refresh into repeated per-tape timeouts.
 - Archive Group-bound manual/watch imports and server-routed verification.
 - Automatic volume-list CSV watching.
 - A user-owned manual barcode override with reported-versus-override provenance.
-- Eight-column P5 Web UI inventory import. Build 33 supports the six-column P5
-  Archive Export/direct `nsdchat` order; the Web UI order moves size to column 4
-  and must wait for schema-aware parsing and atomic validation.
+- An unrestricted custom inventory-column mapper. Unknown layouts stop safely;
+  the two validated P5 profiles require no manual mapping.
+- A complete operator-facing manual/watch Import History and persistent rotating
+  diagnostic logs. Durable watch attempts remain stored internally; these
+  operator views are deferred beyond Build 36.
 - P5 restore submission or archive submission.
 - Moving the active catalog database to another drive.
 

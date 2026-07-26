@@ -8,7 +8,7 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers the upcoming version 0.20 (build 35). Check the
+The documentation covers the upcoming version 0.21 (build 36). Check the
 Releases page for the version number of the latest downloadable pre-release.
 
 ## Download and install
@@ -29,6 +29,11 @@ notarization status will be stated on that release.
 - Normalize balanced SQL-style outer quotes so CSV identities reconcile with
   their TSV tapes, with a targeted cleanup for pre-existing zero-file ghosts.
 - Import searchable tape contents from P5 TSV inventory files.
+- Safely recognize both six-column P5 Archive Export/direct `nsdchat`
+  inventories and eight-column P5 Web GUI Volume Inventory exports.
+- Review the detected inventory columns before a manual import; malformed,
+  mixed, shifted, and unknown layouts stop without replacing the last good
+  inventory.
 - Select one TSV from a larger folder, or select a folder for a bulk import.
 - Import P5-native names such as `90002_vol_inventory.tsv` without treating
   `vol` as a barcode, then resolve a missing barcode from P5 by volume ID.
@@ -41,8 +46,8 @@ notarization status will be stated on that release.
 - Organize tapes into persistent, collapsible Archive Groups independently from
   their TSV source folders.
 - Browse large tape inventories folder by folder.
-- Read the tape-row indicators for LTO generation, a missing barcode, inferred
-  generation, location, and live online/offline state.
+- Read the tape-row indicators for LTO-5 through LTO-10, a missing barcode,
+  inferred generation, location, and live online/offline state.
 - Keep P5 Location visible as read-only metadata while suppressing the
   server's `<empty>` sentinel and its sidebar icon.
 - Search files and derived projects across all imported tapes.
@@ -64,7 +69,7 @@ change data on the P5 server.
 - [User Guide](USER_GUIDE.md)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
-- [Build 35 GitHub Release Blurb](RELEASE_BLURB_0.20_BUILD_35.md)
+- [Build 36 GitHub Release Blurb](RELEASE_BLURB_0.21_BUILD_36.md)
 
 ## Prepare P5 inventory exports
 
@@ -73,10 +78,12 @@ recommended companion app. Its **Volume Export** workflow creates the per-volume
 TSV inventories that P5 Archive Browser searches. It can also include the full
 volume-list CSV and organize TSV output by LTO generation.
 
-Build 33 supports the six-column inventory order `index path, ppath, size,
-handle, btime, mtime`. The eight-column P5 Web UI order is not supported yet
-because it moves file size to column 4; do not import that format until
-schema-aware support is released.
+Build 36 supports both the six-column inventory order `index path, ppath, size,
+handle, btime, mtime` and P5 Web GUI's eight-column order `index path, ppath,
+volumes, size, handle, btime, mtime, checksum`. The app detects the profile,
+shows its field mapping before a manual import, validates every row, and reads
+size from the correct column. Unknown custom layouts remain unsupported and are
+rejected without changing the catalog.
 
 Please do not commit client CSV files, TSV inventories, databases, server
 credentials, logs, or crash reports to this public repository.

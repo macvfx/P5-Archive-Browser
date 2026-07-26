@@ -1,6 +1,6 @@
 # P5 Archive Browser User Guide
 
-Applies to **P5 Archive Browser v0.20 build 35**.
+Applies to **P5 Archive Browser v0.21 build 36**.
 
 ## Purpose
 
@@ -13,8 +13,9 @@ loaded into your normal P5 restore workflow.
 The app keeps three sources distinct:
 
 - **TSV file inventory** supplies archived paths. It powers File Browser, Files
-  search, and Projects. Build 33 supports the six-column order `index path,
-  ppath, size, handle, btime, mtime`.
+  search, and Projects. Build 36 supports the six-column P5 Archive
+  Export/direct `nsdchat` order and P5 Web GUI's eight-column Volume Inventory
+  order.
 - **Volume-list CSV** supplies offline tape metadata such as volume label,
   barcode, state, media type, used size, last-used date, and P5 location.
   Balanced SQL-style outer single quotes are removed before identity matching.
@@ -38,9 +39,19 @@ P5's own Volume Inventory UI may instead create a name such as the synthetic
 `vol_inventory` is a description, not a barcode. The app leaves Barcode empty
 unless the filename contains a valid LTO barcode or metadata later supplies one.
 
-Do not yet import Archiware P5's eight-column Web UI inventory order (`index
-path, ppath, volumes, size, handle, btime, mtime, checksum`). File size moves
-from column 3 to column 4 in that format; schema-aware support is planned.
+The supported profiles are:
+
+- Six-column P5 Archive Export/direct `nsdchat`: `index path, ppath, size,
+  handle, btime, mtime`.
+- Eight-column P5 Web GUI Volume Inventory: `index path, ppath, volumes, size,
+  handle, btime, mtime, checksum`.
+
+Before a manual file, folder, or combined CSV + TSV import, **Review Inventory
+Columns** shows every detected profile and its ordered field mapping. Every
+non-empty row must keep that layout and contain a nonnegative size in the mapped
+column. Mixed, shifted, malformed, and unknown layouts stop without creating a
+new tape or replacing the last good inventory. An unrestricted custom field
+mapper is not included in Build 36.
 
 Arrange an export folder like this:
 
@@ -59,8 +70,8 @@ Client Archive Export/
 2. Select the top-level `Client Archive Export` folder. The app recognizes one
    top-level volume-list CSV, imports it first, and then imports TSV inventories
    from the root and one generation-folder level.
-3. Review the completion summary, which reports metadata and inventory results
-   separately.
+3. Review the detected TSV columns, then review the completion summary, which
+   reports metadata and inventory results separately.
 4. Wait for background search-index maintenance to reach 100%.
 
 You do not need to import each generation separately. The importer reads TSV
@@ -82,7 +93,8 @@ unchanged successful files are skipped. **Check Now** scans immediately, while
 Malformed replacements, interrupted imports, and conflicting sources do not
 replace the last successful tape inventory. Watch state, fingerprints, runs,
 attempts, and inventory provenance remain durable across restarts. Volume-list
-CSV watching is not included yet.
+CSV watching is not included yet. A watched unknown layout is recorded as
+needing column review instead of being guessed or opening a background dialog.
 
 ## Back up, repair, or reset the catalog
 
@@ -127,9 +139,9 @@ Clear the field to return to the folder hierarchy.
 
 ## Understand tape rows
 
-- **Colored disc** — the tape's LTO generation: orange is LTO-6, blue is
-  LTO-7, green is LTO-8, purple is LTO-9, and gray means the generation is
-  unknown.
+- **Colored disc** — the tape's LTO generation: cyan/teal is LTO-5, orange is
+  LTO-6, blue is LTO-7, green is LTO-8, purple is LTO-9, magenta is LTO-10,
+  and gray means the generation is unknown.
 - **Generation badge** — shows the detected LTO generation. A trailing “~”
   means it was inferred from source-folder or size evidence rather than confirmed
   by a barcode.
@@ -140,6 +152,27 @@ Clear the field to return to the folder hierarchy.
 - **Status dot at the right** — when live P5 state is available, green means
   online and gray means offline. No dot means the app has no live online/offline
   state for that tape.
+
+### LTO capacity and inferred generation
+
+Official cartridge specifications and an estimate from imported file totals are
+different evidence:
+
+| Generation | Official native capacity | Advertised compressed capacity |
+|---|---:|---:|
+| LTO-5 | 1.5 TB | 3 TB |
+| LTO-6 | 2.5 TB | 6.25 TB |
+| LTO-7 | 6 TB | 15 TB |
+| LTO-8 | 12 TB | 30 TB |
+| LTO-9 | 18 TB | 45 TB |
+| LTO-10 | 30 TB or 40 TB, by cartridge variant | 75 TB or 100 TB |
+
+Compressed figures are marketing specifications based on an assumed
+compression ratio, not guaranteed usable space. A partial newer tape can have
+the same imported total as a full older tape, and logical file totals can differ
+from physical media use. Therefore a size-derived label is shown as **LTO-X or
+newer** with an inference marker; it is not official media identification.
+Barcode, P5 media metadata, and declared source folder remain stronger evidence.
 
 ## Organize tapes with Archive Groups
 
