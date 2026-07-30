@@ -1,6 +1,6 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.31 build 40**.
+These notes apply to **P5 Archive Browser v0.31 build 41**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
 use copies of exported inventory files. **This pre-release includes the app's

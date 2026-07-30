@@ -1,4 +1,4 @@
-# P5 Archive Browser v0.31 (build 40) Pre-release Notes
+# P5 Archive Browser v0.31 (build 41) Pre-release Notes
 
 This pre-release adds the app's first operation that writes to the P5
 server: restoring a whole tape folder's subtree directly from P5, in a
@@ -48,6 +48,9 @@ support, and LTO-5 through LTO-10 generation recognition from prior builds.
   few seconds, as the closest available signal to what P5 is actually doing
   right now. This has not yet been confirmed against a real tape-load wait —
   testing so far has used a disk-based archive pool.
+- **Build 41 is a small wording fix.** Folder Info's loading message said
+  "Summing catalog rows…" — internal terminology, not something a tester
+  needs to parse. It now says "Counting files and adding up sizes…".
 
 - **Review Inventory Columns** identifies the known six-column P5 Archive
   Export/direct `nsdchat` profile and P5 Web GUI's eight-column Volume Inventory
