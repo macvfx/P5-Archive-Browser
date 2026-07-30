@@ -1,4 +1,4 @@
-# P5 Archive Browser v0.30 (build 38) Pre-release Notes
+# P5 Archive Browser v0.30 (build 39) Pre-release Notes
 
 This pre-release adds the app's first operation that writes to the P5
 server: restoring a whole tape folder's subtree directly from P5, in a
@@ -23,10 +23,18 @@ support, and LTO-5 through LTO-10 generation recognition from prior builds.
   part of it — read-only, no P5 connection required.
 - Restoring an individual file, rather than a whole folder, is intentionally
   not included yet — see **Not included yet** below.
-- **Build 38** is a packaging fix only: the app now fetches its update-checker
-  component from a tagged GitHub release instead of a local build-time
-  reference. Nothing testers will notice changes — same update-check
+- **Build 38** was a packaging fix only: the app now fetches its
+  update-checker component from a tagged GitHub release instead of a local
+  build-time reference. Nothing testers noticed change — same update-check
   behavior as build 37.
+- **Build 39 fixes a real Restore Folder bug.** A folder P5 had actually
+  archived could be reported as "was not found in N archive index(es)
+  across N client(s)." Browser's own catalog paths never carry a leading
+  slash, but P5's entry-resolution endpoint has been observed to require one
+  for some paths and reject it for others. The app now tries both forms
+  before reporting not-found. If you hit this on build 37 or 38, please
+  retest on build 39 — see **Testing Restore Folder** in
+  [Tester Notes](TESTER_NOTES.md).
 
 - **Review Inventory Columns** identifies the known six-column P5 Archive
   Export/direct `nsdchat` profile and P5 Web GUI's eight-column Volume Inventory

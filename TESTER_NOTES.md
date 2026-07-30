@@ -1,6 +1,6 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.30 build 38**.
+These notes apply to **P5 Archive Browser v0.30 build 39**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
 use copies of exported inventory files. **This pre-release includes the app's
@@ -9,7 +9,8 @@ folder directly from P5 (added in build 37) — and it is off by default.
 Please read [Testing Restore Folder](#testing-restore-folder) below before
 turning it on, and continue using your normal P5 tools for individual-file
 restore and archive operations, since those aren't supported by this app yet.
-Build 38 is a packaging fix only and changes nothing testers will notice.
+Build 38 was a packaging fix only. **Build 39 fixes a real restore bug** — see
+below.
 
 ## Important limitations
 
@@ -119,6 +120,14 @@ Build 38 is a packaging fix only and changes nothing testers will notice.
 
 This is the app's first operation that writes to the P5 server, so please
 test it deliberately, on disposable data, before relying on it.
+
+**If you saw "was not found in N archive index(es) across N client(s))"
+before** — that was a real bug, fixed in build 39: the app was sending P5 a
+path without a leading slash, which some archived paths require. If you're
+on build 39 or later and still see that error for a folder you know is
+archived, that's now a genuine not-found (wrong index, `indexroot`, or a
+catalog path that has diverged from what P5 indexed) rather than the
+path-format bug — please report it, including the exact folder path.
 
 1. In **Settings ▸ Restore**, turn on **Enable P5 Restore**. Confirm the
    context-menu item is absent on folders before you do this, and appears
