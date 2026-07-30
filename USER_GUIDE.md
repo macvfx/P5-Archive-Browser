@@ -1,6 +1,6 @@
 # P5 Archive Browser User Guide
 
-Applies to **P5 Archive Browser v0.30 build 39**.
+Applies to **P5 Archive Browser v0.31 build 40**.
 
 ## Purpose
 
@@ -305,6 +305,10 @@ Mac, and reports any difference rather than trusting a completed P5 job — P5
 has been observed to report success while omitting files. If the
 destination isn't readable from this Mac, the app shows P5's own job report
 instead, with a note that job success alone doesn't guarantee completeness.
+While the job is running, the progress banner also shows a few lines from
+P5's own job report underneath the status — the closest available signal to
+what P5 is doing right now, since P5 has no distinct status for "waiting on
+a tape."
 
 Restoring an **individual file**, rather than a whole folder, isn't
 supported yet. For an individual file, or if restore is left off, use the

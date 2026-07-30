@@ -1,6 +1,6 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.30 build 39**.
+These notes apply to **P5 Archive Browser v0.31 build 40**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
 use copies of exported inventory files. **This pre-release includes the app's
@@ -9,7 +9,8 @@ folder directly from P5 (added in build 37) — and it is off by default.
 Please read [Testing Restore Folder](#testing-restore-folder) below before
 turning it on, and continue using your normal P5 tools for individual-file
 restore and archive operations, since those aren't supported by this app yet.
-Build 38 was a packaging fix only. **Build 39 fixes a real restore bug** — see
+Build 38 was a packaging fix only. Build 39 fixed a real restore bug — see
+below. **Build 40 fixes a UI bug and adds mid-run restore visibility** — see
 below.
 
 ## Important limitations
@@ -129,6 +130,13 @@ archived, that's now a genuine not-found (wrong index, `indexroot`, or a
 catalog path that has diverged from what P5 indexed) rather than the
 path-format bug — please report it, including the exact folder path.
 
+**If you saw a small, empty, wordless window after a restore or Folder
+Info** — that was a real bug, fixed in build 40: a timing issue in the
+sheet-presentation code could show the window before its content was ready,
+requiring Escape to dismiss it and a retry. If you're on build 40 or later
+and still see this, please report it with the exact steps that triggered
+it.
+
 1. In **Settings ▸ Restore**, turn on **Enable P5 Restore**. Confirm the
    context-menu item is absent on folders before you do this, and appears
    immediately afterward — no relaunch required.
@@ -139,9 +147,13 @@ path-format bug — please report it, including the exact folder path.
 4. Confirm the sheet shows the expected file count/size, the tape's
    online/offline state, and a computed destination that matches
    `<destination path>/<folder name>/…` — **not** the destination path alone.
-5. Confirm, then watch the job run. If the destination path happens to be
-   readable from the Mac running Browser, confirm the result screen reports
-   an exact match against what was expected.
+5. Confirm, then watch the job run. Confirm the restore confirmation sheet
+   and the progress banner both appear normally — not as a small, empty,
+   wordless window (the build 40 bug above). On a longer restore, confirm
+   the progress banner shows a few lines of text under the status line, from
+   P5's own job report. If the destination path happens to be readable from
+   the Mac running Browser, confirm the result screen reports an exact match
+   against what was expected.
 6. Deliberately test a folder you know is **also archived on a different
    tape**, if one is available. Confirm the result screen reports any extra
    restored files rather than silently absorbing them into "success."
@@ -152,7 +164,8 @@ path-format bug — please report it, including the exact folder path.
 9. Try **Folder Info** (right-click any folder) and **Search All Tapes ▸
    Folders** — both are read-only and available regardless of the restore
    setting. Confirm a folder's Folder Info total matches what its Folders
-   search result shows for the same path.
+   search result shows for the same path. Confirm the Folder Info window
+   itself appears normally and not as the build 40 empty-window bug above.
 
 ## Reporting a problem
 

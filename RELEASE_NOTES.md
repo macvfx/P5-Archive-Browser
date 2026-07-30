@@ -1,4 +1,4 @@
-# P5 Archive Browser v0.30 (build 39) Pre-release Notes
+# P5 Archive Browser v0.31 (build 40) Pre-release Notes
 
 This pre-release adds the app's first operation that writes to the P5
 server: restoring a whole tape folder's subtree directly from P5, in a
@@ -27,14 +27,27 @@ support, and LTO-5 through LTO-10 generation recognition from prior builds.
   update-checker component from a tagged GitHub release instead of a local
   build-time reference. Nothing testers noticed change — same update-check
   behavior as build 37.
-- **Build 39 fixes a real Restore Folder bug.** A folder P5 had actually
+- **Build 39 fixed a real Restore Folder bug.** A folder P5 had actually
   archived could be reported as "was not found in N archive index(es)
   across N client(s)." Browser's own catalog paths never carry a leading
   slash, but P5's entry-resolution endpoint has been observed to require one
   for some paths and reject it for others. The app now tries both forms
   before reporting not-found. If you hit this on build 37 or 38, please
-  retest on build 39 — see **Testing Restore Folder** in
+  retest on build 39 or later — see **Testing Restore Folder** in
   [Tester Notes](TESTER_NOTES.md).
+- **Build 40 fixes an empty-window bug.** The restore confirmation, restore
+  result, and Folder Info windows could occasionally appear as a small,
+  wordless, empty window that only closed with Escape, requiring a retry.
+  This was a SwiftUI timing issue in how those windows were shown; the fix
+  makes it structurally impossible for the window to appear before its
+  content is ready.
+- **Build 40 adds mid-run restore visibility.** P5 doesn't report a distinct
+  status for "waiting on a tape to load" — a restore job just shows
+  "running" the entire time. The progress banner now also shows a few lines
+  from P5's own detailed job report underneath the status, refreshed every
+  few seconds, as the closest available signal to what P5 is actually doing
+  right now. This has not yet been confirmed against a real tape-load wait —
+  testing so far has used a disk-based archive pool.
 
 - **Review Inventory Columns** identifies the known six-column P5 Archive
   Export/direct `nsdchat` profile and P5 Web GUI's eight-column Volume Inventory
