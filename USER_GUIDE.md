@@ -1,6 +1,6 @@
 # P5 Archive Browser User Guide
 
-Applies to **P5 Archive Browser v0.31 build 41**.
+Applies to **P5 Archive Browser v0.31 build 42**.
 
 ## Purpose
 
@@ -308,7 +308,13 @@ instead, with a note that job success alone doesn't guarantee completeness.
 While the job is running, the progress banner also shows a few lines from
 P5's own job report underneath the status — the closest available signal to
 what P5 is doing right now, since P5 has no distinct status for "waiting on
-a tape."
+a tape." If P5 is waiting on a tape, the restore can legitimately take a
+while: the app watches for up to an hour before giving up, and if it does
+give up first, the result screen says plainly that the job may still be
+running rather than reporting a false failure. If a folder was archived to
+more than one tape over time, P5 may also restore more than the
+confirmation sheet showed, since that count only reflects the tape you were
+browsing.
 
 Restoring an **individual file**, rather than a whole folder, isn't
 supported yet. For an individual file, or if restore is left off, use the

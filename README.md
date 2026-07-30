@@ -8,7 +8,7 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers the upcoming version 0.31 (build 41). Check the
+The documentation covers the upcoming version 0.31 (build 42). Check the
 Releases page for the version number of the latest downloadable pre-release.
 
 **This pre-release includes the app's first operation that writes to the P5
@@ -18,10 +18,15 @@ build 37). It's off by default — see
 [User Guide](USER_GUIDE.md) before enabling it. Build 38 was a packaging fix
 only. Build 39 fixed a real restore failure: a folder that P5 had actually
 archived could be reported as "not found" because of a path-format
-mismatch. **Build 40 fixes a UI bug** — a restore or Folder Info window
-could appear small and empty — **and adds a mid-run progress indicator**
-showing a few lines of P5's own job report while a restore runs. See
-[Pre-release Notes](RELEASE_NOTES.md).
+mismatch. Build 40 fixed a UI bug — a restore or Folder Info window could
+appear small and empty — and added a mid-run progress indicator showing a
+few lines of P5's own job report while a restore runs. Build 41 was a small
+wording fix. **Build 42 fixes a real bug found during tape-restore
+testing:** if a restore needed a tape that wasn't loaded, the app could give
+up watching too early and report a false failure while the P5 job was still
+actually running. The app now waits up to an hour and, if it does give up
+first, says plainly that the job may still be in progress rather than
+reporting a false result. See [Pre-release Notes](RELEASE_NOTES.md).
 
 ## Download and install
 
@@ -90,6 +95,7 @@ in the User Guide. Restoring an individual file is not yet supported.
 - [User Guide](USER_GUIDE.md)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
+- [Build 42 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_42.md)
 - [Build 41 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_41.md)
 - [Build 40 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_40.md)
 - [Build 39 GitHub Release Blurb](RELEASE_BLURB_0.30_BUILD_39.md)

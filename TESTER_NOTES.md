@@ -1,6 +1,6 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.31 build 41**.
+These notes apply to **P5 Archive Browser v0.31 build 42**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
 use copies of exported inventory files. **This pre-release includes the app's
@@ -9,9 +9,11 @@ folder directly from P5 (added in build 37) — and it is off by default.
 Please read [Testing Restore Folder](#testing-restore-folder) below before
 turning it on, and continue using your normal P5 tools for individual-file
 restore and archive operations, since those aren't supported by this app yet.
-Build 38 was a packaging fix only. Build 39 fixed a real restore bug — see
-below. **Build 40 fixes a UI bug and adds mid-run restore visibility** — see
-below.
+Build 38 was a packaging fix only. Build 39 fixed a real restore bug, build
+40 fixed a UI bug and added mid-run restore visibility, and build 41 was a
+small wording fix — see below. **Build 42 fixes a real bug found during
+tape-restore testing: a false failure report when P5 is genuinely still
+waiting on a tape** — see below.
 
 ## Important limitations
 
@@ -136,6 +138,19 @@ sheet-presentation code could show the window before its content was ready,
 requiring Escape to dismiss it and a retry. If you're on build 40 or later
 and still see this, please report it with the exact steps that triggered
 it.
+
+**If a restore reported a mismatch a few minutes in, on a folder you know
+is fine** — that was a real bug, fixed in build 42, found during testing
+against real tape hardware. If P5 needed a tape that wasn't loaded, it went
+into a genuine (and legitimately long) wait — but the app was only ever
+watching for 10 minutes, and when it gave up, it incorrectly treated the
+job as finished and reported whatever partial state existed on disk as a
+failure, even though P5 was still actively working. The app now watches for
+up to an hour, and a timeout is now reported honestly as "may still be
+running," never as a false mismatch. If you're on build 42 or later and see
+a restore report "may still be running," check P5's own job monitor
+directly — the app is telling you it stopped watching, not that anything
+failed.
 
 1. In **Settings ▸ Restore**, turn on **Enable P5 Restore**. Confirm the
    context-menu item is absent on folders before you do this, and appears
