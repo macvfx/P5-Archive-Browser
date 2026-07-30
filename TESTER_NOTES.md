@@ -1,14 +1,15 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.30 build 37**.
+These notes apply to **P5 Archive Browser v0.30 build 38**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
-use copies of exported inventory files. **Build 37 introduces this app's
+use copies of exported inventory files. **This pre-release includes the app's
 first operation that writes to the P5 server** — restoring a whole tape
-folder directly from P5 — and it is off by default. Please read
-[Testing Restore Folder](#testing-restore-folder) below before turning it on,
-and continue using your normal P5 tools for individual-file restore and
-archive operations, since those aren't supported by this app yet.
+folder directly from P5 (added in build 37) — and it is off by default.
+Please read [Testing Restore Folder](#testing-restore-folder) below before
+turning it on, and continue using your normal P5 tools for individual-file
+restore and archive operations, since those aren't supported by this app yet.
+Build 38 is a packaging fix only and changes nothing testers will notice.
 
 ## Important limitations
 

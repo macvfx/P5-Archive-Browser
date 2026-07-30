@@ -8,13 +8,16 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers the upcoming version 0.30 (build 37). Check the
+The documentation covers the upcoming version 0.30 (build 38). Check the
 Releases page for the version number of the latest downloadable pre-release.
 
-**Build 37 adds the app's first operation that writes to the P5 server:**
-restoring a whole tape folder's subtree directly from P5. It's off by default
-— see [What testers can do](#what-testers-can-do) and the
-[User Guide](USER_GUIDE.md) before enabling it.
+**This pre-release includes the app's first operation that writes to the P5
+server:** restoring a whole tape folder's subtree directly from P5 (added in
+build 37). It's off by default — see
+[What testers can do](#what-testers-can-do) and the
+[User Guide](USER_GUIDE.md) before enabling it. Build 38 is a packaging fix
+only (see [Pre-release Notes](RELEASE_NOTES.md)); it changes nothing testers
+will notice in the app itself.
 
 ## Download and install
 
@@ -83,7 +86,7 @@ in the User Guide. Restoring an individual file is not yet supported.
 - [User Guide](USER_GUIDE.md)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
-- [Build 37 GitHub Release Blurb](RELEASE_BLURB_0.30_BUILD_37.md)
+- [Build 38 GitHub Release Blurb](RELEASE_BLURB_0.30_BUILD_38.md)
 
 ## Prepare P5 inventory exports
 
