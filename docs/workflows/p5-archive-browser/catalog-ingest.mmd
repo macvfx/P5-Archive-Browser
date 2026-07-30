@@ -1,0 +1,33 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif","primaryColor":"#e8f1ff","primaryTextColor":"#132238","primaryBorderColor":"#3478c5","lineColor":"#52657a","secondaryColor":"#eaf8ef","tertiaryColor":"#fff3d6","clusterBkg":"#f7f9fc","clusterBorder":"#a7b4c4"}}}%%
+flowchart LR
+    CSV["Volume-list CSV<br/>offline metadata"]
+    TSV["TSV inventories<br/>paths and sizes"]
+    API["Optional P5 REST API<br/>live metadata and checks"]
+
+    CSV --> COMBINED["Combined import<br/>CSV first"]
+    TSV --> COMBINED
+    TSV --> MANUAL["Manual TSV import"]
+    TSV --> WATCH["Watch folder<br/>stable new/changed TSV"]
+
+    COMBINED --> REVIEW["Review Inventory Columns"]
+    MANUAL --> REVIEW
+    REVIEW --> VALIDATE{"All rows match profile<br/>and mapped size is valid?"}
+    WATCH --> AUTO{"Known profile and<br/>stable source?"}
+
+    VALIDATE -- "Yes" --> ATOMIC["Atomic catalog update"]
+    VALIDATE -- "No" --> HOLD["Hold source<br/>preserve last good inventory"]
+    AUTO -- "Yes" --> ATOMIC
+    AUTO -- "No" --> NEEDS["Wait / failed /<br/>needs_column_mapping"]
+    NEEDS --> HOLD
+
+    API --> META["Refresh live metadata<br/>without replacing paths"]
+    ATOMIC --> LOCAL[("Local SQLite catalog<br/>paths + provenance")]
+    META --> LOCAL
+    LOCAL --> OUTPUT["Browse • Files • Folders • Projects"]
+
+    classDef safe fill:#eaf8ef,stroke:#24834a,color:#123b23,stroke-width:2px;
+    classDef hold fill:#fff3d6,stroke:#b7791f,color:#4a3211,stroke-width:2px;
+    classDef store fill:#ede9fe,stroke:#6d4fc2,color:#2e2454,stroke-width:2px;
+    class ATOMIC,OUTPUT safe;
+    class HOLD,NEEDS hold;
+    class LOCAL store;

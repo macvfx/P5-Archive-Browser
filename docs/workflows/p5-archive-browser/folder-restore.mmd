@@ -1,0 +1,25 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif","primaryColor":"#e8f1ff","primaryTextColor":"#132238","primaryBorderColor":"#3478c5","lineColor":"#52657a","secondaryColor":"#eaf8ef","tertiaryColor":"#fff3d6","clusterBkg":"#f7f9fc","clusterBorder":"#a7b4c4"}}}%%
+flowchart TD
+    START["Right-click folder<br/>Restore Folder from P5 Archive…"] --> PREVIEW["Resolve archive entry<br/>build catalog preview"]
+    PREVIEW --> CONFIRM{"Operator confirms<br/>client • destination • landing folder<br/>expected count + bytes • tape state"}
+    CONFIRM -- "Cancel / correct" --> STOP["No P5 write"]
+    CONFIRM -- "Confirm once" --> SUBMIT["Submit one directory handle<br/>P5 restores subtree"]
+    SUBMIT --> POLL["Poll job status<br/>show job-report tail<br/>Cancel remains available"]
+    POLL --> STATE{"Observed outcome"}
+
+    STATE -- "Terminal" --> READABLE{"Landing folder readable<br/>from this Mac?"}
+    READABLE -- "Yes" --> RECON["Reconcile paths + bytes"]
+    RECON --> MATCH{"Matches preview?"}
+    MATCH -- "Yes" --> PASS["Verified local match"]
+    MATCH -- "No" --> HOLD["Report missing / unexpected<br/>hold and investigate"]
+    READABLE -- "No" --> REMOTE["Retain P5 report<br/>verify on destination client"]
+
+    STATE -- "One-hour Browser timeout" --> TIMEOUT["P5 job may still run<br/>check P5/tape state before retry"]
+    STATE -- "Cancelled / failed" --> FAILED["Retain attempt record<br/>diagnose before retry"]
+
+    classDef decision fill:#fff3d6,stroke:#b7791f,color:#4a3211,stroke-width:2px;
+    classDef safe fill:#eaf8ef,stroke:#24834a,color:#123b23,stroke-width:2px;
+    classDef hold fill:#fdeaea,stroke:#b63c3c,color:#4b1818,stroke-width:2px;
+    class CONFIRM,STATE,READABLE,MATCH decision;
+    class STOP,PASS safe;
+    class HOLD,TIMEOUT,FAILED hold;

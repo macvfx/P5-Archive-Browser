@@ -1,0 +1,22 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif","primaryColor":"#e8f1ff","primaryTextColor":"#132238","primaryBorderColor":"#3478c5","lineColor":"#52657a","secondaryColor":"#eaf8ef","tertiaryColor":"#fff3d6","clusterBkg":"#f7f9fc","clusterBorder":"#a7b4c4"}}}%%
+flowchart LR
+    START["Search All Tapes"] --> SCOPE{"Choose scope"}
+    SCOPE --> FILES["Files<br/>name or path fragment"]
+    SCOPE --> FOLDERS["Folders<br/>rolled-up size and tapes"]
+    SCOPE --> PROJECTS["Projects<br/>query or List all"]
+
+    FILES --> RESULTS["Grouped tape results"]
+    FOLDERS --> RESULTS
+    PROJECTS --> RESULTS
+    RESULTS --> REVEAL["Reveal / Browse<br/>open tape at path"]
+    REVEAL --> INSPECT["Inspect identity, path,<br/>Folder Info or Verify in P5"]
+    INSPECT --> NEED{"What needs retrieval?"}
+    NEED -- "One file" --> NORMAL["Use barcode/label + path<br/>in normal P5 workflow"]
+    NEED -- "Whole folder" --> ENABLED{"Browser restore enabled<br/>and P5 configured?"}
+    ENABLED -- "No" --> NORMAL
+    ENABLED -- "Yes" --> RESTORE["Open guarded<br/>folder restore"]
+
+    classDef decision fill:#fff3d6,stroke:#b7791f,color:#4a3211,stroke-width:2px;
+    classDef action fill:#eaf8ef,stroke:#24834a,color:#123b23,stroke-width:2px;
+    class SCOPE,NEED,ENABLED decision;
+    class REVEAL,INSPECT,NORMAL,RESTORE action;

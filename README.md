@@ -93,6 +93,8 @@ in the User Guide. Restoring an individual file is not yet supported.
 ## Start here
 
 - [User Guide](USER_GUIDE.md)
+- [Illustrated Workflow Guide](P5_ARCHIVE_BROWSER_ILLUSTRATED_WORKFLOW_GUIDE.md)
+- [Illustrated Workflow Guide PDF](P5_ARCHIVE_BROWSER_ILLUSTRATED_WORKFLOW_GUIDE.pdf)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
 - [Build 42 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_42.md)
