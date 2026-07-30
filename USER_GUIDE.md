@@ -1,12 +1,12 @@
 # P5 Archive Browser User Guide
 
-Applies to **P5 Archive Browser v0.21 build 36**.
+Applies to **P5 Archive Browser v0.30 build 37**.
 
 ## Purpose
 
-P5 Archive Browser is a local catalog for P5 Archive volumes, usually LTO tapes.
-It lets you find an archived file or project and identify the tape that should be
-loaded into your normal P5 restore workflow.
+P5 Archive Browser is a local catalog for P5 Archive volumes, usually LTO
+tapes. It lets you find an archived file or project, identify the tape, and —
+for a whole folder, once turned on in Settings — restore it directly from P5.
 
 ## Data sources
 
@@ -136,6 +136,21 @@ content size below that folder.
 Use the search field above File Browser to search only the selected tape. Broad
 searches report the complete match count while displaying the first 2,000 paths.
 Clear the field to return to the folder hierarchy.
+
+## Folder sizes
+
+- **Folder Info** — right-click any folder in File Browser for a read-only
+  summary: this tape's recursive file count and size, plus a roll-up across
+  every other tape holding part of the same folder. No P5 connection is
+  needed; this reads only the local catalog.
+- **Search All Tapes ▸ Folders** — a third search scope alongside Files and
+  Projects. Enter at least three characters of a folder name; each result
+  shows its rolled-up size and every tape it spans. Double-click a tape row,
+  or use **Browse**, to open that tape at the matching folder.
+
+Both totals sum the file sizes imported from TSV inventories. They don't yet
+distinguish a directory row in the source TSV from a file, and don't account
+for duplicate or versioned entries across tapes.
 
 ## Understand tape rows
 
@@ -272,13 +287,31 @@ Verification:
 The imported local catalog remains the primary tape-identification source. Live
 P5 inventory responses do not always include a physical tape or barcode.
 
-## Identify and restore the tape
+## Restore a folder, or use P5 directly
 
-Use the volume label, barcode, LTO generation, P5 location, your own Location
-note, and full archived path to identify the cartridge. Load and restore it using
-your site's normal P5 interface and procedures.
+Right-click a folder in **File Browser** and choose **Restore Folder from P5
+Archive…** to restore its whole subtree in a single step — one directory
+handle restores the entire tree, confirmed against a live P5 8.0.4 server.
+This is off by default: turn on **Enable P5 Restore** in **Settings ▸
+Restore** first, and set a default destination client and path.
 
-P5 Archive Browser does not operate tape hardware or submit restore jobs.
+The confirmation sheet shows the expected file count and size from the local
+catalog (not from P5's own directory listing), the tape's online/offline
+state, and the exact destination path — a restore always creates a new
+folder named after the source folder; it never overwrites the destination
+path itself. After the job completes, the app verifies what actually landed
+against what was expected whenever the destination is readable from this
+Mac, and reports any difference rather than trusting a completed P5 job — P5
+has been observed to report success while omitting files. If the
+destination isn't readable from this Mac, the app shows P5's own job report
+instead, with a note that job success alone doesn't guarantee completeness.
+
+Restoring an **individual file**, rather than a whole folder, isn't
+supported yet. For an individual file, or if restore is left off, use the
+volume label, barcode, LTO generation, P5 location, your own Location note,
+and full archived path to identify the cartridge, then restore through your
+normal P5 interface. P5 Archive Browser still doesn't operate tape hardware
+directly; P5 handles loading the cartridge and running the job.
 
 ## Local data and passwords
 

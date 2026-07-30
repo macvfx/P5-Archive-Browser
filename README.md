@@ -8,8 +8,13 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers the upcoming version 0.21 (build 36). Check the
+The documentation covers the upcoming version 0.30 (build 37). Check the
 Releases page for the version number of the latest downloadable pre-release.
+
+**Build 37 adds the app's first operation that writes to the P5 server:**
+restoring a whole tape folder's subtree directly from P5. It's off by default
+— see [What testers can do](#what-testers-can-do) and the
+[User Guide](USER_GUIDE.md) before enabling it.
 
 ## Download and install
 
@@ -59,17 +64,26 @@ notarization status will be stated on that release.
 - List P5 archive indexes and archive plans.
 - Perform a read-only sanity check for a cataloged file across P5 archive
   indexes.
+- **Restore a whole folder directly from P5** — right-click a folder and
+  choose Restore Folder from P5 Archive… Off by default (**Settings ▸
+  Restore ▸ Enable P5 Restore**). Shows the expected file count/size and
+  destination before submitting, then independently verifies what actually
+  landed rather than trusting a completed P5 job.
+- **Folder Info and Search All Tapes ▸ Folders** — read-only recursive folder
+  size, per tape and rolled up across every tape.
 - Check the public GitHub releases automatically or with **Check for Updates…**.
 
-P5 Archive Browser does not load tapes, restore files, submit archive jobs, or
-change data on the P5 server.
+P5 Archive Browser does not load tapes into a drive or submit archive jobs.
+Restoring a whole folder from P5, off by default, is now supported — see
+[Restore a folder, or use P5 directly](USER_GUIDE.md#restore-a-folder-or-use-p5-directly)
+in the User Guide. Restoring an individual file is not yet supported.
 
 ## Start here
 
 - [User Guide](USER_GUIDE.md)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
-- [Build 36 GitHub Release Blurb](RELEASE_BLURB_0.21_BUILD_36.md)
+- [Build 37 GitHub Release Blurb](RELEASE_BLURB_0.30_BUILD_37.md)
 
 ## Prepare P5 inventory exports
 

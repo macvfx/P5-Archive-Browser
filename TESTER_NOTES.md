@@ -1,10 +1,14 @@
 # Tester Notes
 
-These notes apply to **P5 Archive Browser v0.21 build 36**.
+These notes apply to **P5 Archive Browser v0.30 build 37**.
 
 Thank you for testing P5 Archive Browser. This is a pre-release application, so
-use copies of exported inventory files and continue using your normal P5 tools
-for archive and restore operations.
+use copies of exported inventory files. **Build 37 introduces this app's
+first operation that writes to the P5 server** — restoring a whole tape
+folder directly from P5 — and it is off by default. Please read
+[Testing Restore Folder](#testing-restore-folder) below before turning it on,
+and continue using your normal P5 tools for individual-file restore and
+archive operations, since those aren't supported by this app yet.
 
 ## Important limitations
 
@@ -21,8 +25,18 @@ for archive and restore operations.
 - Watch Folder automatically imports TSV only; volume-list CSV watching is not
   available yet.
 - Archive Groups are not yet bound to named multiple P5 servers.
-- P5 API operations in this app are read-only. The app does not restore, archive,
-  delete, or move files.
+- **Restoring a whole folder from P5 is supported and off by default.**
+  Restoring an **individual file** is not — restore the containing folder
+  instead, or use your normal P5 workflow. The app never archives, deletes,
+  or moves files.
+- Folder restore always creates a new folder named after the source folder
+  under your chosen destination. It never overwrites the destination path
+  itself, but overwrite behavior *within* a populated destination (e.g.
+  restoring the same folder twice) has not been characterized — use an
+  empty or dedicated destination.
+- Folder-size totals (Folder Info, Search ▸ Folders) sum imported TSV file
+  sizes. They don't yet distinguish a directory row in the source TSV from a
+  file, and don't account for duplicate or versioned entries across tapes.
 - A failed P5 file check can mean the archived path, capitalization, path mapping,
   or available archive indexes differ from the imported TSV.
 
@@ -99,6 +113,36 @@ for archive and restore operations.
 31. If LTO-5 or LTO-10 samples are available, confirm their sidebar colors,
     filters, sorting, and detail labels. For a size-only estimate, confirm the
     wording says **LTO-X or newer** rather than claiming an exact generation.
+
+## Testing Restore Folder
+
+This is the app's first operation that writes to the P5 server, so please
+test it deliberately, on disposable data, before relying on it.
+
+1. In **Settings ▸ Restore**, turn on **Enable P5 Restore**. Confirm the
+   context-menu item is absent on folders before you do this, and appears
+   immediately afterward — no relaunch required.
+2. Set a default destination client (often `localhost`, the P5 server itself)
+   and a default destination path, e.g. a scratch `Restore` folder.
+3. Right-click a small, disposable folder in **File Browser** and choose
+   **Restore Folder from P5 Archive…**.
+4. Confirm the sheet shows the expected file count/size, the tape's
+   online/offline state, and a computed destination that matches
+   `<destination path>/<folder name>/…` — **not** the destination path alone.
+5. Confirm, then watch the job run. If the destination path happens to be
+   readable from the Mac running Browser, confirm the result screen reports
+   an exact match against what was expected.
+6. Deliberately test a folder you know is **also archived on a different
+   tape**, if one is available. Confirm the result screen reports any extra
+   restored files rather than silently absorbing them into "success."
+7. Point the destination at a path this Mac cannot read (a different client,
+   no shared mount) and confirm the result screen says so plainly, showing
+   only P5's own job report with a caveat, rather than a false "success."
+8. Check **Settings ▸ Restore** afterward for the "Last restore" summary line.
+9. Try **Folder Info** (right-click any folder) and **Search All Tapes ▸
+   Folders** — both are read-only and available regardless of the restore
+   setting. Confirm a folder's Folder Info total matches what its Folders
+   search result shows for the same path.
 
 ## Reporting a problem
 

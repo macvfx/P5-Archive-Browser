@@ -1,11 +1,28 @@
-# P5 Archive Browser v0.21 (build 36) Pre-release Notes
+# P5 Archive Browser v0.30 (build 37) Pre-release Notes
 
-This pre-release makes P5 inventory imports schema-safe, supports P5 Web GUI
-Volume Inventory exports directly, and extends generation recognition and
-operator colors from LTO-5 through LTO-10. It also includes the recent Archive
-Groups, catalog backup, update checking, and bounded P5 connection work.
+This pre-release adds the app's first operation that writes to the P5
+server: restoring a whole tape folder's subtree directly from P5, in a
+single request, off by default. It also adds read-only folder-size
+summaries (Folder Info and a Folders search scope), and includes the
+earlier schema-safe P5 inventory import, P5 Web GUI Volume Inventory
+support, and LTO-5 through LTO-10 generation recognition from prior builds.
 
 ## Highlights
+
+- **Restore Folder from P5 Archive.** Restoring one directory handle
+  recovers its entire subtree in a single request, confirmed against a live
+  P5 8.0.4 server. Off by default — enable in **Settings ▸ Restore**. The
+  confirmation sheet shows the expected file count/size from the local
+  catalog (not from P5's own directory listing) and the exact computed
+  destination. After the job completes, the app independently verifies what
+  landed against what was expected whenever the destination is readable
+  from this Mac, rather than trusting a completed P5 job — P5 has been
+  observed to report success while omitting files. Every attempt is logged.
+- **Folder Info** and **Search All Tapes ▸ Folders** show a folder's
+  recursive file count and size, rolled up across every tape that holds
+  part of it — read-only, no P5 connection required.
+- Restoring an individual file, rather than a whole folder, is intentionally
+  not included yet — see **Not included yet** below.
 
 - **Review Inventory Columns** identifies the known six-column P5 Archive
   Export/direct `nsdchat` profile and P5 Web GUI's eight-column Volume Inventory
@@ -109,7 +126,14 @@ Groups, catalog backup, update checking, and bounded P5 connection work.
 - A complete operator-facing manual/watch Import History and persistent rotating
   diagnostic logs. Durable watch attempts remain stored internally; these
   operator views are deferred beyond Build 36.
-- P5 restore submission or archive submission.
+- **Individual-file restore.** Only whole-folder restore is included. Per-file
+  selection needs a per-entry destination path to avoid restored files
+  landing in the wrong place when two files share a name across folders, and
+  that isn't built yet.
+- Archive submission — this app never writes anything except restored files
+  from a folder restore the operator explicitly confirmed.
+- A full restore-history browsing UI. A "last restore" summary is shown in
+  Settings ▸ Restore; each attempt is logged internally.
 - Moving the active catalog database to another drive.
 
 See [Tester Notes](TESTER_NOTES.md) for installation limitations and the
