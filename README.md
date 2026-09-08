@@ -8,7 +8,7 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers the upcoming version 0.31 (build 42). Check the
+The documentation covers the upcoming version 0.31 (build 44). Check the
 Releases page for the version number of the latest downloadable pre-release.
 
 **This pre-release includes the app's first operation that writes to the P5

@@ -1,4 +1,13 @@
-# P5 Archive Browser v0.31 (build 42) Pre-release Notes
+# P5 Archive Browser v0.31 (build 44) Pre-release Notes
+
+Build 44 is the current pre-release. It carries everything described below,
+which first appeared in build 42, plus an update-alert fix that was made in the
+unpublished build 43 — see
+`RELEASE_BLURB_0.31_BUILD_44.md`. There are no catalog or settings changes.
+
+---
+
+## Build 42 — what this pre-release introduced
 
 This pre-release adds the app's first operation that writes to the P5
 server: restoring a whole tape folder's subtree directly from P5, in a

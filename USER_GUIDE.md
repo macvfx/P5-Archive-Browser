@@ -1,6 +1,6 @@
 # P5 Archive Browser User Guide
 
-Applies to **P5 Archive Browser v0.31 build 42**.
+Applies to **P5 Archive Browser v0.31 build 44**.
 
 ## Purpose
 

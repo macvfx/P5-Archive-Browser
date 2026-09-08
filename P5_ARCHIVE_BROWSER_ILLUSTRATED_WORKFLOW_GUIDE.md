@@ -1,6 +1,6 @@
 # P5 Archive Browser — Illustrated Workflow Guide
 
-**Status:** Current workflow companion — v0.31 build 42
+**Status:** Current workflow companion — v0.31 build 44
 **Canonical detail:** [P5 Archive Browser — User Guide](USER_GUIDE.md)
 **Audience:** Archive operators, assistants, and technical reviewers
 
