@@ -31,7 +31,7 @@ hardware.
 
 Everything from build 37 (restore folder, folder sizes), build 38
 (packaging fix), and build 39 (path-resolution fix) is also included. See
-[Pre-release Notes](RELEASE_NOTES.md) for the complete current feature set.
+[Pre-release Notes](../../RELEASE_NOTES.md) for the complete current feature set.
 
 ## Compatibility
 
@@ -43,5 +43,5 @@ Everything from build 37 (restore folder, folder sizes), build 38
 Same as build 37–39: the only operation that writes to the P5 server is a
 folder restore the operator explicitly confirms, and it is off by default.
 If you saw the empty-window issue on an earlier build, please retest — see
-[Testing Restore Folder](TESTER_NOTES.md#testing-restore-folder) in Tester
+[Testing Restore Folder](../../TESTER_NOTES.md#testing-restore-folder) in Tester
 Notes.

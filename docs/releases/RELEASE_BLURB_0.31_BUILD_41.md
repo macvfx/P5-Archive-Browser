@@ -14,7 +14,7 @@ wording already used elsewhere in the app (the restore progress banner's
 
 Everything from build 40 (restore progress tail, empty-window fix), build
 39 (path-resolution fix), build 38 (packaging fix), and build 37 (restore
-folder, folder sizes). See [Pre-release Notes](RELEASE_NOTES.md) for the
+folder, folder sizes). See [Pre-release Notes](../../RELEASE_NOTES.md) for the
 complete current feature set.
 
 ## Compatibility

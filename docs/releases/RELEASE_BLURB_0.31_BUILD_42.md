@@ -36,7 +36,7 @@ needed there.
 Everything from build 41 (wording fix), build 40 (restore progress tail,
 empty-window fix), build 39 (path-resolution fix), build 38 (packaging
 fix), and build 37 (restore folder, folder sizes). See
-[Pre-release Notes](RELEASE_NOTES.md) for the complete current feature set.
+[Pre-release Notes](../../RELEASE_NOTES.md) for the complete current feature set.
 
 ## Compatibility
 
@@ -49,5 +49,5 @@ Same as build 37–41: the only operation that writes to the P5 server is a
 folder restore the operator explicitly confirms, and it is off by default.
 If you saw a false mismatch report on an earlier build for a restore that
 needed a tape, please retest — see
-[Testing Restore Folder](TESTER_NOTES.md#testing-restore-folder) in Tester
+[Testing Restore Folder](../../TESTER_NOTES.md#testing-restore-folder) in Tester
 Notes.

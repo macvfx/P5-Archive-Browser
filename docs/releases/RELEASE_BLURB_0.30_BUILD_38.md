@@ -8,7 +8,7 @@ in the app itself changed — same update-check behavior as build 37.
 
 Everything from build 37, including this pre-release's headline feature:
 restoring a whole tape folder's subtree directly from P5 in a single request,
-off by default. See [Pre-release Notes](RELEASE_NOTES.md) for the complete
+off by default. See [Pre-release Notes](../../RELEASE_NOTES.md) for the complete
 current feature set, or
 [RELEASE_BLURB_0.30_BUILD_37.md](RELEASE_BLURB_0.30_BUILD_37.md) for that
 build's own notes.
@@ -22,5 +22,5 @@ build's own notes.
 
 Same as build 37: the only operation that writes to the P5 server is a
 folder restore the operator explicitly confirms, and it is off by default.
-See [Testing Restore Folder](TESTER_NOTES.md#testing-restore-folder) in
+See [Testing Restore Folder](../../TESTER_NOTES.md#testing-restore-folder) in
 Tester Notes before enabling it.

@@ -100,10 +100,10 @@ in the User Guide. Restoring an individual file is not yet supported.
 - [Pre-release Notes](RELEASE_NOTES.md)
 - [Build 49 GitHub Release Blurb](RELEASE_BLURB_0.33_BUILD_49.md)
 - [Build 44 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_44.md)
-- [Build 42 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_42.md)
-- [Build 41 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_41.md)
-- [Build 40 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_40.md)
-- [Build 39 GitHub Release Blurb](RELEASE_BLURB_0.30_BUILD_39.md)
+- [Build 42 GitHub Release Blurb](docs/releases/RELEASE_BLURB_0.31_BUILD_42.md)
+- [Build 41 GitHub Release Blurb](docs/releases/RELEASE_BLURB_0.31_BUILD_41.md)
+- [Build 40 GitHub Release Blurb](docs/releases/RELEASE_BLURB_0.31_BUILD_40.md)
+- [Build 39 GitHub Release Blurb](docs/releases/RELEASE_BLURB_0.30_BUILD_39.md)
 
 ## Prepare P5 inventory exports
 

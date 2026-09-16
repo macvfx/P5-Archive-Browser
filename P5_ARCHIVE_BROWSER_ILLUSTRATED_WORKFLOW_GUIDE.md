@@ -150,8 +150,8 @@ preview counted.
 | Schema-safe import and preservation of the last good inventory | [`USER_GUIDE.md`](USER_GUIDE.md) | [`RELEASE_NOTES.md`](RELEASE_NOTES.md) and [`TESTER_NOTES.md`](TESTER_NOTES.md) |
 | Stable, deduplicated watch imports and hold states | [`USER_GUIDE.md`](USER_GUIDE.md) | [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
 | Cross-tape Files, Folders, and Projects workflows | [`USER_GUIDE.md`](USER_GUIDE.md) | [`TESTER_NOTES.md`](TESTER_NOTES.md) |
-| Restore is opt-in and confirmation-gated | [`USER_GUIDE.md`](USER_GUIDE.md) | [`RELEASE_BLURB_0.30_BUILD_37.md`](RELEASE_BLURB_0.30_BUILD_37.md) |
-| Restore polling, timeout meaning, and attempt history | [`USER_GUIDE.md`](USER_GUIDE.md) | [`RELEASE_BLURB_0.31_BUILD_42.md`](RELEASE_BLURB_0.31_BUILD_42.md) |
+| Restore is opt-in and confirmation-gated | [`USER_GUIDE.md`](USER_GUIDE.md) | [`RELEASE_BLURB_0.30_BUILD_37.md`](docs/releases/RELEASE_BLURB_0.30_BUILD_37.md) |
+| Restore polling, timeout meaning, and attempt history | [`USER_GUIDE.md`](USER_GUIDE.md) | [`RELEASE_BLURB_0.31_BUILD_42.md`](docs/releases/RELEASE_BLURB_0.31_BUILD_42.md) |
 | Independent local path/byte reconciliation | [`USER_GUIDE.md`](USER_GUIDE.md) | [`TESTER_NOTES.md`](TESTER_NOTES.md) |
 | Catalog backup and backup-gated reset | [`USER_GUIDE.md`](USER_GUIDE.md) | [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
 

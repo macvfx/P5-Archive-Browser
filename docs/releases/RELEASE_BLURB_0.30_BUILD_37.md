@@ -45,5 +45,5 @@ Every other operation — inventory import, search, browsing, Folder Info,
 verification — remains local-catalog or read-only against P5, exactly as
 before. Back up the catalog from Settings ▸ Catalog Data before large
 production tests, and test restore itself against disposable data first —
-see [Testing Restore Folder](TESTER_NOTES.md#testing-restore-folder) in
+see [Testing Restore Folder](../../TESTER_NOTES.md#testing-restore-folder) in
 Tester Notes.

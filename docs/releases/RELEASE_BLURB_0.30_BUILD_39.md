@@ -26,7 +26,7 @@ correctly.
 ## What's in this release
 
 Everything from build 37 (restore folder, folder sizes) and build 38
-(packaging fix). See [Pre-release Notes](RELEASE_NOTES.md) for the complete
+(packaging fix). See [Pre-release Notes](../../RELEASE_NOTES.md) for the complete
 current feature set.
 
 ## Compatibility
@@ -39,5 +39,5 @@ current feature set.
 Same as build 37/38: the only operation that writes to the P5 server is a
 folder restore the operator explicitly confirms, and it is off by default.
 If you saw the "not found" error on an earlier build, please retest — see
-[Testing Restore Folder](TESTER_NOTES.md#testing-restore-folder) in Tester
+[Testing Restore Folder](../../TESTER_NOTES.md#testing-restore-folder) in Tester
 Notes.
