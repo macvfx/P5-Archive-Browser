@@ -17,8 +17,9 @@ waiting on a tape** — see below.
 
 ## Important limitations
 
-- The app is Apple-silicon only and requires macOS 14.6 or later.
-- Download only the DMG attached to this repository's pre-release. Check that
+- Requires macOS 14.6 or later. The app is a universal binary and runs
+  natively on both Apple-silicon and Intel Macs.
+- Download only the DMG attached to a release in this repository. Check that
   release for the app's signing and notarization status.
 - TSV import accepts one selected `.tsv`; selecting a folder scans that folder
   and one subfolder level.

@@ -36,9 +36,10 @@ reporting a false result. See [Pre-release Notes](RELEASE_NOTES.md).
 3. Drag **P5 Archive Browser.app** to the Applications folder.
 4. Eject the DMG, then open the app from Applications.
 
-This pre-release is for Apple-silicon Macs and requires macOS 14.6 or later.
-Download only the DMG attached to a pre-release in this repository. Signing and
-notarization status will be stated on that release.
+The app is a universal binary — it runs natively on both Apple-silicon and
+Intel Macs — and requires macOS 14.6 or later. Download only the DMG attached to
+a release in this repository. Signing and notarization status will be stated on
+that release.
 
 ## What testers can do
 
