@@ -1,6 +1,6 @@
 # P5 Archive Browser User Guide
 
-Applies to **P5 Archive Browser v0.31 build 44**.
+Applies to **P5 Archive Browser v0.33 build 49**.
 
 ## Purpose
 
@@ -223,12 +223,42 @@ Select **Search All Tapes** in the sidebar.
 1. Select **Projects**.
 2. Leave the query blank and click **List**, or enter a project-name fragment.
 3. Review each project and the tapes that contain it.
-4. Double-click a tape row or click **Browse** to open that tape filtered to the
-   complete project path.
-5. Click **Back to Project Results** to return.
+4. Double-click a tape row or click **Browse** to open that tape with the project
+   folder revealed in the folder tree — parents expanded, the folder highlighted —
+   so its right-click actions, including Restore Folder, are available.
+5. Use **Restore This Folder…** in the banner, or right-click the folder, to
+   restore it. A project archived to several tapes needs one restore per tape;
+   the banner says when that applies.
+6. Click **Back to Project Results** to return.
 
-Project detection is configured in **Settings ▸ Projects** using archive root
-paths, an optional naming pattern, and a folder-depth fallback.
+A project archived to more than one tape is listed once, with each tape shown
+under it.
+
+### Telling the app what a project is
+
+A project is derived from the folder path, and the rule is configured in
+**Settings ▸ Projects**. Getting it right matters: a rule that stops one level
+too shallow puts every project on a storage into a single bucket, so the name
+you are looking for never appears in Projects — while **Files** and **Folders**
+search still find it, because neither uses this rule.
+
+1. Click **Detect Roots…**. The app scans the imported catalog and proposes the
+   folder levels whose children look like projects, each with how many folders
+   sit under it and a sample of their names. Tick the ones that hold your
+   projects and choose **Use Selected Roots**. A project is then the folder
+   directly under a root, which lets each storage nest differently — one may keep
+   projects under a `Clients` folder, another directly under the share.
+2. With no roots configured, the project is the folder at the configured
+   **depth**, counted from the storage root past P5's restore-index prefix. One
+   depth only works if every storage nests alike.
+3. An optional **naming pattern** — your own project prefix, a Year-Number style,
+   or a regular expression — takes precedence over depth where it matches.
+4. Choose **Apply**. Project folders are recomputed in the background across the
+   whole catalog; the Projects list fills in as it runs.
+
+Use **Why these results?** above the Projects list to see the rule in effect and
+what it produced per storage. A storage showing a single project for thousands of
+files is flagged, and means the rule stopped a level too shallow there.
 
 ## Recent and saved searches
 
