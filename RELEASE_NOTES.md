@@ -1,6 +1,16 @@
-# P5 Archive Browser v0.31 (build 44) Pre-release Notes
+# P5 Archive Browser — Pre-release Notes
 
-Build 44 is the current pre-release. It carries everything described below,
+> **Current pre-release: 0.37 (build 56).** See
+> [`RELEASE_BLURB_0.37_BUILD_56.md`](RELEASE_BLURB_0.37_BUILD_56.md) for what it
+> changes — per-server HTTP or HTTPS with certificate checking, and a Tools menu.
+>
+> This file had been left at 0.31 while 0.33, 0.34, 0.35 and 0.37 shipped. Each
+> release's notes are the per-version blurb it links from; what follows is kept as the
+> 0.31 history.
+
+## v0.31 (build 44)
+
+Build 44 was the pre-release at the time. It carries everything described below,
 which first appeared in build 42, plus an update-alert fix that was made in the
 unpublished build 43 — see
 `RELEASE_BLURB_0.31_BUILD_44.md`. There are no catalog or settings changes.

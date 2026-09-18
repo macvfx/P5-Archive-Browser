@@ -8,7 +8,7 @@ file inventories exported from Archiware P5 Archive. It helps answer:
 This public repository is for application testing and documentation only. It
 does not contain the application source code.
 
-The documentation covers version 0.33 (build 49). Check the
+The documentation covers version 0.37 (build 56). Check the
 Releases page for the version number of the latest downloadable pre-release.
 
 **This pre-release includes the app's first operation that writes to the P5
@@ -98,6 +98,7 @@ in the User Guide. Restoring an individual file is not yet supported.
 - [Illustrated Workflow Guide PDF](P5_ARCHIVE_BROWSER_ILLUSTRATED_WORKFLOW_GUIDE.pdf)
 - [Tester Notes](TESTER_NOTES.md)
 - [Pre-release Notes](RELEASE_NOTES.md)
+- [Build 56 GitHub Release Blurb](RELEASE_BLURB_0.37_BUILD_56.md)
 - [Build 49 GitHub Release Blurb](RELEASE_BLURB_0.33_BUILD_49.md)
 - [Build 44 GitHub Release Blurb](RELEASE_BLURB_0.31_BUILD_44.md)
 - [Build 42 GitHub Release Blurb](docs/releases/RELEASE_BLURB_0.31_BUILD_42.md)

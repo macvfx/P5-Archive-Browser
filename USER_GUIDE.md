@@ -98,12 +98,19 @@ needing column review instead of being guessed or opening a background dialog.
 
 ## Back up, repair, or reset the catalog
 
-Open **Settings ▸ Catalog Data**:
+The actions are in **Tools ▸ Catalog Tools…**. Where backups are written, and what the
+catalog currently occupies, stay in **Settings ▸ Catalog Data** — one is a preference and
+the other is information; only the operations moved.
+
+Settings ▸ Catalog Data:
 
 - **Storage used** reports the main SQLite database plus active WAL and
   shared-memory sidecars.
 - **Preferred Backup Folder** chooses where manual backup panels start and
   automatic pre-reset backups are written. It may be on another mounted drive.
+
+Tools ▸ Catalog Tools…:
+
 - **Back Up Catalog…** creates a consistent standalone SQLite copy while the
   app remains open.
 - **Remove Invalid CSV Records…** is available only when the app finds
@@ -273,9 +280,24 @@ This keeps similar File and Project searches together.
 ## P5 connection
 
 Open Settings using the gear beside **Refresh Detail** or the standard macOS
-Settings command. Enter the P5 server address, port, username, API version, and
-fallback archive index. Save the password in the macOS login Keychain, then test
+Settings command. Enter the P5 server address, protocol, port, username, API version,
+and fallback archive index. Save the password in the macOS login Keychain, then test
 the connection.
+
+**HTTP or HTTPS.** P5 serves the same REST API in the clear on port 8000 and over TLS
+on port 8443, and which one a server offers is decided when P5 is installed. Choosing
+HTTPS moves the port to 8443 unless you typed one yourself; an existing configuration
+stays on HTTP.
+
+P5 ships a self-signed certificate that macOS will not accept on its own, so HTTPS
+comes with **Check Certificate**. It shows the fingerprint and subject of the
+certificate the server actually presents, and whether macOS trusts it. Trusting it once
+records that exact certificate; if the server later presents a different one the
+connection is refused rather than quietly accepted. A server whose administrator
+installed a real certificate needs no trusting at all.
+
+The setting applies to everything the app asks P5 — volume syncs, archive lookups,
+restores and job status.
 
 Use:
 
@@ -285,7 +307,9 @@ Use:
 - **Resolve from P5** beside an empty Barcode to match the P5 volume list by
   label or numeric ID, then fall back to the individual volume detail. If P5
   reports no barcode, the value remains empty.
-- **P5 Tools** beside Refresh Detail to list archive indexes and archive plans.
+- **Server Info** beside Refresh Detail, or **Tools ▸ Server Info…**, to list the
+  archive indexes and archive plans the server is configured with. Plans that delete
+  the source after archiving are flagged.
 
 **P5 Location** remains visible in Info & Notes as read-only metadata. Change it
 in P5, then use **Refresh Detail**. When P5 reports `<empty>`, the field shows a
