@@ -122,3 +122,9 @@ rejected without changing the catalog.
 
 Please do not commit client CSV files, TSV inventories, databases, server
 credentials, logs, or crash reports to this public repository.
+
+## License
+
+Free to use for your own business or work, including on client jobs. You may not sell,
+redistribute or sublicense the software. The terms are the
+[PolyForm Internal Use License 1.0.0](LICENSE).
