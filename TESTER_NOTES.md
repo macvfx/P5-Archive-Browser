@@ -88,7 +88,7 @@ waiting on a tape** — see below.
 19. Import a copy of a volume-list CSV with balanced outer single quotes around
     its fields. Confirm its synthetic volume `90010` reconciles with TSV volume
     `90010` instead of creating a second zero-file tape.
-20. In Settings ▸ **Catalog Data**, confirm invalid CSV cleanup counts and
+20. In **Tools ▸ Catalog Tools…**, confirm invalid CSV cleanup counts and
     removes only quote-polluted CSV records with zero files.
 21. Use **Back Up Catalog…** and confirm the resulting SQLite file exists
     without required `-wal` or `-shm` companions. Test reset only with disposable

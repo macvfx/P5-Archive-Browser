@@ -106,19 +106,39 @@ Settings ▸ Catalog Data:
 
 - **Storage used** reports the main SQLite database plus active WAL and
   shared-memory sidecars.
+- Each **Archive Group** is listed with the tapes and files it holds.
+- **Reclaimable space** is empty space inside the database, left behind when
+  tapes or groups are removed, or the catalog is reset, and nothing is imported
+  in their place. It usually reads **None**, which is normal: re-importing a
+  tape reuses the space it held. The file does not shrink on its own.
 - **Preferred Backup Folder** chooses where manual backup panels start and
   automatic pre-reset backups are written. It may be on another mounted drive.
 
-Tools ▸ Catalog Tools…:
+Tools ▸ Catalog Tools… is a window of its own, so the main window stays usable
+while it works:
 
 - **Back Up Catalog…** creates a consistent standalone SQLite copy while the
-  app remains open.
+  app remains open and usable. A progress bar shows how far it has got, and
+  **Cancel** stops it and removes the partial file. You can close Catalog Tools
+  and reopen it to see the progress or the result. Tapes imported while it runs
+  are included. It checks first that the destination has room.
+- **Compact Catalog** gives the reclaimable space back to the disk. It removes
+  nothing. It rewrites the whole catalog, so it can take several minutes on a
+  large one, and imports wait until it finishes. It tells you first if the disk
+  lacks the room it needs. It is available only when there is at least 16 MB to
+  recover.
 - **Remove Invalid CSV Records…** is available only when the app finds
   CSV-origin, zero-file records whose identity still has balanced outer single
   quotes. Inventory-bearing tapes are never selected.
 - **Back Up and Reset Catalog…** stops the watch folder and must create a dated
   backup before clearing imported tapes, inventories, Archive Groups, and watch
   history. P5/project settings and the Keychain password are preserved.
+
+**Tools ▸ Catalog History…** (also **History…** in Catalog Tools) lists every
+backup, compact, reset and invalid-record removal: when it started, how long it
+took, the catalog size before and after, where a backup went, and how it ended.
+An operation cut short by quitting the app is marked interrupted at the next
+launch. **Export CSV…** saves the list.
 
 If the preferred backup folder is unavailable or not writable, reset stops
 without changing the catalog. Moving the active database itself is not yet
@@ -280,7 +300,9 @@ This keeps similar File and Project searches together.
 ## P5 connection
 
 Open Settings using the gear beside **Refresh Detail** or the standard macOS
-Settings command. Enter the P5 server address, protocol, port, username, API version,
+Settings command. Settings has six panes, chosen from the list down its left side:
+P5 Server, Watch Folder, Restore, Catalog Data, Projects and About. It reopens on
+the pane last used. In **P5 Server**, enter the P5 server address, protocol, port, username, API version,
 and fallback archive index. Save the password in the macOS login Keychain, then test
 the connection.
 
@@ -294,7 +316,8 @@ comes with **Check Certificate**. It shows the fingerprint and subject of the
 certificate the server actually presents, and whether macOS trusts it. Trusting it once
 records that exact certificate; if the server later presents a different one the
 connection is refused rather than quietly accepted. A server whose administrator
-installed a real certificate needs no trusting at all.
+installed a real certificate needs no trusting at all. If a certificate is rejected
+later, **Tools ▸ Server Info…** offers the same **Check Certificate…**.
 
 The setting applies to everything the app asks P5 — volume syncs, archive lookups,
 restores and job status.

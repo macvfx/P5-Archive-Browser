@@ -2,8 +2,9 @@
 
 Per-release notes for superseded builds, moved out of the repository
 root so the current documentation is not buried among them. The newest
-2 remain at the root.
+3 remain at the root.
 
+- [RELEASE BLURB 0.31 BUILD 44](RELEASE_BLURB_0.31_BUILD_44.md)
 - [RELEASE BLURB 0.31 BUILD 42](RELEASE_BLURB_0.31_BUILD_42.md)
 - [RELEASE BLURB 0.31 BUILD 41](RELEASE_BLURB_0.31_BUILD_41.md)
 - [RELEASE BLURB 0.31 BUILD 40](RELEASE_BLURB_0.31_BUILD_40.md)
