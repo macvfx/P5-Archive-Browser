@@ -1,10 +1,10 @@
 # P5 Archive Browser — Pre-release Notes
 
-> **Current pre-release: 0.38 (build 63).** See
-> [`RELEASE_BLURB_0.38_BUILD_63.md`](RELEASE_BLURB_0.38_BUILD_63.md) for what it
-> changes — compacting the catalog, backups that do not block the app, Catalog History,
-> and a sidebar in Settings. The release before it, 0.37 (build 56), is described in
-> [`RELEASE_BLURB_0.37_BUILD_56.md`](RELEASE_BLURB_0.37_BUILD_56.md).
+> **Current pre-release: 0.39 (build 64).** See
+> [`RELEASE_BLURB_0.39_BUILD_64.md`](RELEASE_BLURB_0.39_BUILD_64.md): a layout fix in
+> Catalog Tools. The substance is in 0.38 (build 63) —
+> [`RELEASE_BLURB_0.38_BUILD_63.md`](RELEASE_BLURB_0.38_BUILD_63.md) — compacting the
+> catalog, backups that do not block the app, Catalog History, and a sidebar in Settings.
 >
 > This file had been left at 0.31 while 0.33, 0.34, 0.35 and 0.37 shipped. Each
 > release's notes are the per-version blurb it links from; what follows is kept as the
